@@ -1,36 +1,25 @@
 {
-    "name": "asbo/whoswho-bundle",
-    "type": "symfony-bundle",
-    "description": "Symfony ASBO Who's Who Bundle",
-    "keywords": [],
-    "homepage": "http://github.com/Malian/WhosWhoBundle",
-    "license": "MIT",
     "authors": [
         {
-            "name": "Malian De Ron",
-            "email": "deronmalian@gmail.com"
+            "email": "deronmalian@gmail.com",
+            "name": "Malian De Ron"
         }
     ],
+    "autoload": {
+        "psr-0":         {
+            "Asbo\\WhosWhoBundle": ""
+        }
+    },
+    "description": "Symfony ASBO Who's Who Bundle",
+    "homepage": "http://github.com/Malian/WhosWhoBundle",
+    "license": "MIT",
     "minimum-stability": "dev",
+    "name": "asbo/whoswho-bundle",
     "require": {
         "php": ">=5.3.2",
         "symfony/framework-bundle": ">=2.1,<2.3-dev",
         "symfony/security-bundle": ">=2.1,<2.3-dev"
     },
-    "require-dev": {
-        "twig/twig": "*",
-        "doctrine/doctrine-bundle": "*",
-        "swiftmailer/swiftmailer": "*",
-        "symfony/yaml": "2.1.*",
-        "symfony/validator": "2.1.*"
-    },
-    "autoload": {
-        "psr-0": { "Asbo\\WhosWhoBundle": "" }
-    },
     "target-dir": "Asbo/WhosWhoBundle",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0.x-dev"
-        }
-    }
+    "type": "symfony-bundle"
 }
