@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="asbo.whoswho.form.type.anno" class="Asbo\WhosWhoBundle\Form\Type\AnnoType">
+            <tag name="form.type" alias="asbo_type_anno" />
+        </service>
+
+        <service id="asbo.whoswho.form.type.annotext" class="Asbo\WhosWhoBundle\Form\Type\AnnoTextType">
+            <tag name="form.type" alias="asbo_type_annotext" />
+        </service>
+
+
+        <service id="asbo.whoswho.form.type.email" class="Asbo\WhosWhoBundle\Form\Type\EmailType">
+            <tag name="form.type" alias="asbo_type_email" />
+        </service>
+
+    </services>
+
+</container>

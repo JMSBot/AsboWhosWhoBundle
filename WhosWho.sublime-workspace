@@ -1,0 +1,660 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"array_un",
+				"array_unshift"
+			],
+			[
+				"con",
+				"container"
+			],
+			[
+				"load",
+				"load"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"getRoute",
+				"getRouterIdParameter  (function)"
+			],
+			[
+				"lorem",
+				"lorem	lorem - Short paragraph <p>"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"doc",
+				"doc_f	Function"
+			],
+			[
+				"padding",
+				"padding-top"
+			],
+			[
+				"diplsya",
+				"display"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"bod",
+				"border-color"
+			],
+			[
+				"border-co",
+				"border-color"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"margin-",
+				"margin-left"
+			],
+			[
+				"padd",
+				"padding-box"
+			],
+			[
+				"backg",
+				"background-size"
+			],
+			[
+				"User",
+				"UserBundle"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"fot",
+				"font-size"
+			],
+			[
+				"link",
+				"link	link - stylesheet"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"repeat",
+				"repeat-x"
+			],
+			[
+				"ne",
+				"newFamille"
+			],
+			[
+				"postList",
+				"postListManager"
+			],
+			[
+				"label",
+				"label	<label>"
+			],
+			[
+				"text-",
+				"text-align"
+			],
+			[
+				"securit",
+				"SecurityContext"
+			],
+			[
+				"convoc_ep",
+				"convoc_ephemerides_q2"
+			],
+			[
+				"convoc",
+				"convoc_ephemerides_q1"
+			],
+			[
+				"blog",
+				"blog-post-container"
+			],
+			[
+				"display",
+				"display	display: inline"
+			],
+			[
+				"ine",
+				"inline-block"
+			],
+			[
+				"a",
+				"a	<a>"
+			],
+			[
+				"findAd",
+				"findAdressesBy"
+			],
+			[
+				"security",
+				"securityIdentity"
+			],
+			[
+				"getFra",
+				"getFraManager"
+			],
+			[
+				"enit",
+				"entity"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"About"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"control",
+				"Package Control: Add Repository"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"quick",
+				"Git: Quick Commit"
+			],
+			[
+				"commit",
+				"Git: Commit"
+			],
+			[
+				"gits",
+				"Git: Status"
+			],
+			[
+				"Snippet:",
+				"Snippet: html"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 602.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/deronmalian/Sites/new.asbo/app/config/config.yml",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/views/Admin/dashboard.html.twig",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/config/config.yml",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Twig/GlobalVariables.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/DependencyInjection/AsboWhosWhoExtension.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/config/parameters.yml",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/DependencyInjection/Configuration.php",
+		"/Users/deronmalian/Sites/new.asbo/vendor/sonata-project/block-bundle/Sonata/BlockBundle/DependencyInjection/Configuration.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Controller/AdminController.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/AsboWhosWhoBundle.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/DependencyInjection/Compiler/GlobalVariablesCompilerPass.php",
+		"/Users/deronmalian/Sites/new.asbo/app/AppKernel.php",
+		"/Users/deronmalian/Sites/new.asbo/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/DependencyInjection/Compiler/TwigEnvironmentPass.php",
+		"/Users/deronmalian/Sites/new.asbo/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/FrameworkBundle.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/views/layout_admin.html.twig",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/config/twig.xml",
+		"/Users/deronmalian/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/config/admin.xml",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/translations/AsboWhosWhoBundle.fr.xlf",
+		"/Users/deronmalian/Sites/new.asbo/app/config/routing.yml",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Admin/DiplomaAdmin.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Admin/FraAdmin.php",
+		"/Users/deronmalian/Downloads/export_fra_2012_12_12_16_08_47.xml",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Admin/PostAdmin.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Entity/Post.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Form/DataTransformer/StringToAnnoTransformer.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/config/form_types.xml",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Form/Type/AnnoTextType.php",
+		"/Users/deronmalian/Sites/ratchet/test/app/index.html",
+		"/Users/deronmalian/Desktop/old.htaccess",
+		"/private/var/folders/n5/4cksyjws2dlb2bg91dlrrc380000gn/T/15c15bd9-781d-4e09-9f60-b36863260cae/www/Revue2013/config/config.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/views/layout.html.twig",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/views/Fra/home.html.twig",
+		"/Users/deronmalian/.gitignore_global",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/composer.json",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/compser.json",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/Bundle/WhosWhoBundle/AsboWhosWhoBundle.php",
+		"/Users/deronmalian/Sites/new.asbo/composer.json",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Entity/Address.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Entity/Email.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Entity/Diploma.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Entity/Family.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Entity/Phone.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Admin/EmailAdmin.php",
+		"/private/etc/apache2/virtualhosts/parcimony.conf",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/views/Block/block_whoswho.html.twig",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Admin/PhoneAdmin.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Admin/WhosWhoAdmin.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/views/Admin/phone_unpublish.html.twig",
+		"/Users/deronmalian/Sites/new.asbo/app/config/parameters.yml",
+		"/Users/deronmalian/Sites/new.asbo/vendor/sonata-project/admin-bundle/Sonata/AdminBundle/Admin/AdminInterface.php",
+		"/Users/deronmalian/Sites/new.asbo/vendor/sonata-project/admin-bundle/Sonata/AdminBundle/Admin/Admin.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Block/WhosWhoBlockService.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Resources/config/block.xml",
+		"/Users/deronmalian/Sites/spip/htaccess.txt",
+		"/private/etc/apache2/virtualhosts/spip.conf",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/WhosWhoBundle/Entity/Fra.php",
+		"/opt/local/apache2/conf/httpd.conf",
+		"/opt/local/etc/php5/php.ini",
+		"/usr/local/php5-20120915-224819/lib/php.ini",
+		"/private/etc/apache2/httpd.conf",
+		"/Users/deronmalian/Sites/cv/assets/img/texture.jpeg",
+		"/Users/deronmalian/Sites/cv/index.php",
+		"/Users/deronmalian/Downloads/Clean Business Resume.html",
+		"/Users/deronmalian/Desktop/org.serviio.server.plist ",
+		"/Users/deronmalian/Sites/new.asbo/app/config/routing_dev.yml",
+		"/Users/deronmalian/Sites/new.asbo/app/config/security.yml",
+		"/Users/deronmalian/Desktop/test.tex",
+		"/Users/deronmalian/Dropbox/Proba Stat 2012/APP1exo1.m",
+		"/Users/deronmalian/Documents/CI/Comités/Un jet CI vil (2012-2013)/Rapport Aune Q1/rapport.tex",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/SiteBundle/Controller/DefaultController.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/SiteBundle/Resources/views/Default/index.html.twig",
+		"/Users/deronmalian/Sites/malian.me/composer.json",
+		"/Users/deronmalian/Sites/new.asbo/app/Resources/views/base.html.twig",
+		"/Users/deronmalian/Sites/new.asbo/.gitignore",
+		"/Users/deronmalian/Sites/asbo-old/app/Resources/views/base.html.twig",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/SiteBundle/Resources/views/base.html.twig",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/SiteBundle/Resources/config/services.xml",
+		"/Users/deronmalian/Sites/asbo-old/app/config/routing.yml",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/UserBundle/AsboUserBundle.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/UserBundle/Entity/User.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/UserBundle/DependencyInjection/Configuration.php",
+		"/Users/deronmalian/Sites/new.asbo/src/Asbo/UserBundle/DependencyInjection/MalianUserExtension.php",
+		"/Users/deronmalian/Sites/new.asbo/.htaccess",
+		"/Users/deronmalian/Library/Application Support/Sublime Text 2/Packages/Git/Git.sublime-settings",
+		"/Users/deronmalian/Sites/new.asbo/web/config.php",
+		"/Users/deronmalian/Sites/recette.me/composer.json",
+		"/Users/deronmalian/Sites/recette.me/app/config/config.yml",
+		"/Users/deronmalian/Sites/recette.me/app/AppKernel.php",
+		"/Users/deronmalian/Sites/recette.me/app/DoctrineMigrations/Version20120612222732.php",
+		"/Users/deronmalian/Sites/recette.me/src/Malian/UserBundle/Entity/User.php",
+		"/Users/deronmalian/Sites/recette.me/vendor/doctrine/migrations/lib/Doctrine/DBAL/Migrations/Tools/Console/Command/ExecuteCommand.php",
+		"/Users/deronmalian/Sites/recette.me/app/config/routing.yml",
+		"/Users/deronmalian/Sites/recette.me/src/Malian/UserBundle/DataFixtures/ORM/UserFixtures.php",
+		"/Users/deronmalian/Sites/recette.me/src/Malian/UserBundle/Entity/Group.php",
+		"/Users/deronmalian/Sites/recette.me/app/config/security.yml",
+		"/Users/deronmalian/Sites/recette.me/web/infos.php",
+		"/Users/deronmalian/Sites/recette.me/src/Malian/UserBundle/MalianUserBundle.php",
+		"/Users/deronmalian/Sites/recette.me/app/config/parameters.yml",
+		"/Users/deronmalian/Sites/blog/virtualhost.sh",
+		"/Users/deronmalian/.Trash/phpMyAdmin/config.inc.php",
+		"/Users/deronmalian/Sites/phpmyadmin/config.inc.php",
+		"/Users/deronmalian/Sites/phpMyAdmin/config.inc.php",
+		"/Applications/MAMP/tmp/mysql/mysql.sock",
+		"/Users/deronmalian/Sites/blog/index.php",
+		"/Users/deronmalian/Sites/blog/wp-config-sample.php",
+		"/Users/deronmalian/Sites/blog/wp-config.php",
+		"/Users/deronmalian/Sites/malian.me/app/config/config.yml",
+		"/Users/deronmalian/Sites/malian.me/.gitignore",
+		"/Users/deronmalian/Sites/yannick/malian.me.sublime-project",
+		"/Users/deronmalian/Sites/malian.me/composer.lock",
+		"/Users/deronmalian/Sites/yannick/users_login.php",
+		"/Users/deronmalian/Sites/yannick/index.php",
+		"/Users/deronmalian/Sites/-hazzam/users_register.php",
+		"/Users/deronmalian/Sites/-hazzam/product_add.php",
+		"/Users/deronmalian/Sites/malian.me/app/Resources/views/base.html.twig",
+		"/Users/deronmalian/Sites/malian.me/src/Malian/WebSiteBundle/Resources/assets/scss/style-responsive.scss",
+		"/Users/deronmalian/Sites/malian.me/src/Malian/WebSiteBundle/Resources/views/Main/homepage.html.twig",
+		"/Users/deronmalian/Sites/malian.me/src/Malian/WebSiteBundle/Resources/assets/scss/style.scss",
+		"/Users/deronmalian/Sites/malian.me/web/assets/img/png/airplane.png",
+		"/Users/deronmalian/Sites/malian.me/app/config/routing.yml",
+		"/Users/deronmalian/Sites/malian.me/app/AppKernel.php",
+		"/Users/deronmalian/Sites/malian.me/app/config/routing_dev.yml",
+		"/Users/deronmalian/Sites/malian.me/app/config/parameters.yml",
+		"/Users/deronmalian/Sites/malian.me/src/Malian/WebSiteBundle/Resources/public/config.rb",
+		"/Users/deronmalian/Sites/old.malian.me/app/Resources/views/base.html.twig",
+		"/Users/deronmalian/Sites/old.malian.me/app/config/routing.yml",
+		"/Users/deronmalian/Sites/malian.me/src/Malian/UserBundle/Entity/User.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Who's Who ?",
+			"Who's Who ?asbo.whoswho.admin.groupname",
+			"Who's Who ?",
+			"media",
+			"label_translator_strategy=\"sonata.admin.label.strategy.underscore\"",
+			"apache",
+			"configureRoute",
+			"configureRoutes",
+			"recette",
+			"php",
+			"php_curl",
+			"curl",
+			"span6",
+			"span5",
+			";\n",
+			"assets",
+			"%}",
+			"Malian",
+			"install",
+			"footer",
+			"opaci",
+			"ul",
+			">",
+			"\">",
+			"Main",
+			"        {",
+			"index",
+			"Default",
+			">",
+			"post-info",
+			".ext",
+			"ext",
+			"post-date",
+			"images/",
+			";",
+			"url('ba",
+			"../images/",
+			"../",
+			"poste",
+			"findBy",
+			"@media",
+			"'",
+			"INSERT",
+			" ",
+			"famille",
+			"job",
+			"famille",
+			"email",
+			"job",
+			"telephone",
+			"email",
+			"poste",
+			"TelephonesAction",
+			"0278428",
+			"telephon",
+			"',",
+			"show_legend",
+			"render_fieldset",
+			",",
+			"'",
+			"\"",
+			",",
+			"fréd",
+			"z-index",
+			"'",
+			"Adresse",
+			"adresse",
+			"Adresse",
+			"adresse",
+			"Adresse",
+			"\\Column",
+			"sonata-",
+			"<div class=\"blog-post-list\">\n\n    {% for post in pager.getResults() %}\n\n        <div class=\"blog-post-container\">\n\n            <div class=\"blog-post-date-container\">\n                {{ post.publicationDateStart | format_date }}\n            </div>\n\n            <h2 class=\"blog-post-title\">\n                <a href=\"{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}\">{{ post.title }}</a>\n            </h2>\n\n            <span class=\"blog-post-author\">{{ post.author }}</span>\n\n            <div class=\"blog-post-information\">\n\n                <div class=\"blog-post-tag-container\">\n                    <div class=\"blog-post-tag-list\">\n                        {% for tag in post.tags%}\n                            <a href=\"{{ url('sonata_news_tag', {'tag': tag.slug} ) }}\">{{ tag.name }}</a>\n                            {% if not loop.last%}, {%endif%}\n                        {% endfor %}\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"blog-post-abtract\">\n                {{ post.abstract|raw }}\n            </div>\n        </div>\n    {% else %}\n        Il n'y a acutellement aucune news !\n    {% endfor %}\n</div>\n\n{% block stylesheets %}\n<style type=\"text/css\">\n    .blog-post-container {\n       background-attachment: scroll/fixed;\n    }\n</style>\n{% endblock %}",
+			"comment->getPost()",
+			"sonata-",
+			"YourProject\\YourBundle",
+			"\">",
+			"aval",
+			"150",
+			"preview",
+			"Jcrop",
+			") }}",
+			"job",
+			"Job",
+			"job",
+			"adresse",
+			"Adresse",
+			"job",
+			"Job",
+			"job",
+			"Job",
+			"job",
+			"Job",
+			"job",
+			"Job",
+			"poste_ext",
+			"poste_extManager",
+			"poste",
+			"posteext",
+			"adresse",
+			"Adresse",
+			"adresse",
+			"Adresse",
+			"adresse",
+			"Adresse",
+			"Poste",
+			"poste",
+			"Poste",
+			"adresse",
+			"Adresse",
+			"adresse",
+			"Adresse",
+			"adresse",
+			"Adresse",
+			"adresse",
+			"Adresse",
+			"adresse",
+			"Adresse",
+			"adresse",
+			"Adresse",
+			"adresse",
+			"Adresse",
+			"adresse",
+			"Adresse",
+			"array('fra' => $fra->getId())",
+			"email",
+			"Email",
+			"email"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 25.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"Admin/PostAdmin.php"
+			],
+			[
+				"app/config",
+				"app/config/config.yml"
+			],
+			[
+				"frama",
+				"WhosWho's/Manager/FraManager.php"
+			],
+			[
+				"adrec",
+				"WhosWho's/Controller/AdresseController.php"
+			],
+			[
+				"adressecont",
+				"WhosWho's/Controller/AdresseController.php"
+			],
+			[
+				"edit",
+				"WhosWho's/Resources/views/Adresse/edit.html.twig"
+			],
+			[
+				"poste",
+				"WhosWho's/Entity/Poste.php"
+			],
+			[
+				"fra",
+				"src/Asbo/WhosWhoBundle/Repository/FraRepository.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 258.0,
+	"status_bar_visible": false
+}

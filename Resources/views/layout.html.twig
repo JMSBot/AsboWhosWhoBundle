@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="body-content">
+	{% block asbo_whoswho_content %}{% endblock %}
+	</div>
+{% endblock %}
+
+{% block page_title %}Who's Who ?{% endblock %}
+
+{% block sidebar_bottom %}
+	{% if is_granted("ROLE_WHOSWHO_USER") %}
+	<div class="sidebar">
+		<h2> &nbsp; <a href="#">Who's Who ?</a></h2>
+		<ul class="unstyled">
+			<li><a href="#" title="Mon compte">Mon compte</a></li>
+			<li><a href="#" title="Liste des Fras">Liste des Fras</a></li>
+			<li><a href="#" title="Recherche">Recherche</a></li>
+		</ul>
+	</div>
+	{% endif %}
+{% endblock %}
