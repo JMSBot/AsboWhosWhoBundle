@@ -90,6 +90,7 @@ class Phone
     public function setNumber($number)
     {
         $this->number = $number;
+
         return $this;
     }
 
@@ -112,6 +113,7 @@ class Phone
     public function setType($type)
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -134,6 +136,7 @@ class Phone
     public function setCountry($country)
     {
         $this->country = $country;
+
         return $this;
     }
 
@@ -155,6 +158,7 @@ class Phone
     public function getCountryCode()
     {
         $countries = Locale::getDisplayCountries(\Locale::getDefault());
+
         return $countries[$this->getCountry()];
     }
 
@@ -167,6 +171,7 @@ class Phone
     public function setFra(\Asbo\WhosWhoBundle\Entity\Fra $fra)
     {
         $this->fra = $fra;
+
         return $this;
     }
 
@@ -189,6 +194,7 @@ class Phone
     public function setPrincipal($principal)
     {
         $this->principal = $principal;
+
         return $this;
     }
 
@@ -233,6 +239,7 @@ class Phone
     public function getTypeCode()
     {
         $type = self::getTypeList();
+
         return isset($type[$this->getType()]) ? $type[$this->getType()] : null;
     }
 
@@ -244,7 +251,6 @@ class Phone
         return array_keys(self::getTypeList());
     }
 
-
     /**
      * __toString
      */
@@ -252,6 +258,5 @@ class Phone
     {
         return (string) $this->number;
     }
-
 
 }

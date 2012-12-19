@@ -90,6 +90,7 @@ class Family
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
+
         return $this;
     }
 
@@ -112,6 +113,7 @@ class Family
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
+
         return $this;
     }
 
@@ -134,6 +136,7 @@ class Family
     public function setDate($date)
     {
         $this->date = $date;
+
         return $this;
     }
 
@@ -156,6 +159,7 @@ class Family
     public function setType($type)
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -178,6 +182,7 @@ class Family
     public function setFra(\Asbo\WhosWhoBundle\Entity\Fra $fra)
     {
         $this->fra = $fra;
+
         return $this;
     }
 
@@ -210,6 +215,7 @@ class Family
     public function setLink(\Asbo\WhosWhoBundle\Entity\Fra $link)
     {
         $this->link = $link;
+
         return $this;
     }
 
@@ -219,6 +225,7 @@ class Family
     public function __toString()
     {
         if(empty($this->link))
+
             return $this->firstname.' '.$this->lastname;
 
         return (string) $this->link;
@@ -244,6 +251,7 @@ class Family
     public function getTypeCode()
     {
         $type = self::getTypeList();
+
         return isset($type[$this->getType()]) ? $type[$this->getType()] : null;
     }
 

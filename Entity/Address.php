@@ -4,7 +4,6 @@ namespace Asbo\WhosWhoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Locale\Locale;
 use Asbo\CoreBundle\Entity\AbstractGMapEntity;
 
 /**
@@ -71,6 +70,7 @@ class Address extends AbstractGMapEntity
     public function setType($type)
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -93,6 +93,7 @@ class Address extends AbstractGMapEntity
     public function setPrincipal($principal)
     {
         $this->principal = $principal;
+
         return $this;
     }
 
@@ -115,6 +116,7 @@ class Address extends AbstractGMapEntity
     public function setFra(\Asbo\WhosWhoBundle\Entity\Fra $fra)
     {
         $this->fra = $fra;
+
         return $this;
     }
 

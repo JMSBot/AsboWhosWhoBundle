@@ -4,10 +4,8 @@ namespace Asbo\WhosWhoBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 use Asbo\WhosWhoBundle\Entity\Family;
-use Knp\Menu\ItemInterface as MenuItemInterface;
 
 class FamilyAdmin extends Admin
 {
@@ -19,7 +17,7 @@ class FamilyAdmin extends Admin
                    ->add('type', 'choice', array('choices' => Family::getTypeList(), 'expanded' => true, 'multiple' => false))
                    ->add('link', null, array('required' => false))
         ;
-        
+
         if($this->getRequest()->get('_sonata_admin') === 'asbo.whoswho.admin.fra.family')
             $formMapper->add('fra', 'sonata_type_model_list');
     }

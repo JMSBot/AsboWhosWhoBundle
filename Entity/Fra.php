@@ -7,7 +7,6 @@ use Gedmo\Mapping\Annotation as GEDMO;
 use Symfony\Component\Validator\Constraints as Assert;
 use Asbo\WhosWhoBundle\Form\DataTransformer\DateToAnnoTransformer;
 
-
 /**
  * Asbo\WhosWhoBundle\Entity\Fra
  *
@@ -175,7 +174,6 @@ class Fra
      */
     private $settings = array();
 
-
     /**
      * Default Settings
      */
@@ -248,7 +246,7 @@ class Fra
     /**
      * Set firstname
      *
-     * @param string $firstname
+     * @param  string $firstname
      * @return Fra
      */
     public function setFirstname($firstname)
@@ -271,7 +269,7 @@ class Fra
     /**
      * Set lastname
      *
-     * @param string $lastname
+     * @param  string $lastname
      * @return Fra
      */
     public function setLastname($lastname)
@@ -294,7 +292,7 @@ class Fra
     /**
      * Set nickname
      *
-     * @param string $nickname
+     * @param  string $nickname
      * @return Fra
      */
     public function setNickname($nickname)
@@ -317,7 +315,7 @@ class Fra
     /**
      * Set gender
      *
-     * @param boolean $gender
+     * @param  boolean $gender
      * @return Fra
      */
     public function setGender($gender)
@@ -340,7 +338,7 @@ class Fra
     /**
      * Set bornAt
      *
-     * @param \DateTime $bornAt
+     * @param  \DateTime $bornAt
      * @return Fra
      */
     public function setBornAt($bornAt)
@@ -363,7 +361,7 @@ class Fra
     /**
      * Set diedAt
      *
-     * @param \DateTime $diedAt
+     * @param  \DateTime $diedAt
      * @return Fra
      */
     public function setDiedAt($diedAt)
@@ -386,7 +384,7 @@ class Fra
     /**
      * Set bornIn
      *
-     * @param string $bornIn
+     * @param  string $bornIn
      * @return Fra
      */
     public function setBornIn($bornIn)
@@ -409,7 +407,7 @@ class Fra
     /**
      * Set diedIn
      *
-     * @param string $diedIn
+     * @param  string $diedIn
      * @return Fra
      */
     public function setDiedIn($diedIn)
@@ -432,7 +430,7 @@ class Fra
     /**
      * Set type
      *
-     * @param integer $type
+     * @param  integer $type
      * @return Fra
      */
     public function setType($type)
@@ -455,7 +453,7 @@ class Fra
     /**
      * Set status
      *
-     * @param integer $status
+     * @param  integer $status
      * @return Fra
      */
     public function setStatus($status)
@@ -478,7 +476,7 @@ class Fra
     /**
      * Set anno
      *
-     * @param integer $anno
+     * @param  integer $anno
      * @return Fra
      */
     public function setAnno($anno)
@@ -506,14 +504,14 @@ class Fra
     public function getAnnoToDates()
     {
         $transformer = new DateToAnnoTransformer();
+
         return ($transformer->reverseTransform($this->anno)->format('Y') - 1).' - '.$transformer->reverseTransform($this->anno)->format('Y');
     }
-
 
     /**
      * Set pontif
      *
-     * @param boolean $pontif
+     * @param  boolean $pontif
      * @return Fra
      */
     public function setPontif($pontif)
@@ -536,7 +534,7 @@ class Fra
     /**
      * Set slug
      *
-     * @param string $slug
+     * @param  string $slug
      * @return Fra
      */
     public function setSlug($slug)
@@ -559,7 +557,7 @@ class Fra
     /**
      * Set user
      *
-     * @param Asbo\UserBundle\Entity\User $user
+     * @param  Asbo\UserBundle\Entity\User $user
      * @return Fra
      */
     public function setUser(\Asbo\UserBundle\Entity\User $user = null)
@@ -596,7 +594,7 @@ class Fra
     /**
      * Add emails
      *
-     * @param Asbo\WhosWhoBundle\Entity\Email $emails
+     * @param  Asbo\WhosWhoBundle\Entity\Email $emails
      * @return Fra
      */
     public function addEmail(\Asbo\WhosWhoBundle\Entity\Email $emails)
@@ -656,7 +654,7 @@ class Fra
     /**
      * Add diplomas
      *
-     * @param Asbo\WhosWhoBundle\Entity\Diploma $diplomas
+     * @param  Asbo\WhosWhoBundle\Entity\Diploma $diplomas
      * @return Fra
      */
     public function addDiploma(\Asbo\WhosWhoBundle\Entity\Diploma $diplomas)
@@ -716,7 +714,7 @@ class Fra
     /**
      * Add post
      *
-     * @param Asbo\WhosWhoBundle\Entity\Post $post
+     * @param  Asbo\WhosWhoBundle\Entity\Post $post
      * @return Fra
      */
     public function addPost(\Asbo\WhosWhoBundle\Entity\Post $post)
@@ -776,7 +774,7 @@ class Fra
     /**
      * Add address
      *
-     * @param Asbo\WhosWhoBundle\Entity\Address $address
+     * @param  Asbo\WhosWhoBundle\Entity\Address $address
      * @return Fra
      */
     public function addAddress(\Asbo\WhosWhoBundle\Entity\Address $address)
@@ -833,11 +831,10 @@ class Fra
         }
     }
 
-
     /**
      * Add phone
      *
-     * @param Asbo\WhosWhoBundle\Entity\Phone $phone
+     * @param  Asbo\WhosWhoBundle\Entity\Phone $phone
      * @return Fra
      */
     public function addPhone(\Asbo\WhosWhoBundle\Entity\Phone $phone)
@@ -872,7 +869,7 @@ class Fra
      * Set multiple phone number
      *
      * @return Fra
-     * @param ArrayCollection $phones
+     * @param  ArrayCollection $phones
      **/
     public function setPhones(\Doctrine\Common\Collections\ArrayCollection $phones)
     {
@@ -880,6 +877,7 @@ class Fra
             $phone->setFra($this);
         }
         $this->phones = $phones;
+
         return $this;
     }
 
@@ -901,17 +899,16 @@ class Fra
         }
     }
 
-
-
     /**
      * Set settings
      *
-     * @param array $settings
+     * @param  array    $settings
      * @return Settings
      */
     public function setSettings($settings)
     {
         $this->settings = array_merge($this->defaultsettings, array_intersect_key($settings, $this->defaultsettings));
+
         return $this;
     }
 
@@ -944,6 +941,7 @@ class Fra
     public function getTypeCode()
     {
         $type = self::getTypeList();
+
         return isset($type[$this->getType()]) ? $type[$this->getType()] : null;
     }
 
@@ -973,6 +971,7 @@ class Fra
     public function getStatusCode()
     {
         $status = self::getStatusList();
+
         return isset($status[$this->getStatus()]) ? $status[$this->getStatus()] : null;
     }
 }

@@ -16,6 +16,7 @@ class StringToAnnoTransformer implements DataTransformerInterface
     public function transform($date)
     {
         if($date instanceof \DateTime)
+
             return array('type' => (int) 1, 'date' => $date);
         else
             return array('type' => (int) 0, 'date' => $date);
@@ -24,18 +25,17 @@ class StringToAnnoTransformer implements DataTransformerInterface
     /**
      * Transforms a string (number) to an object (DateTime).
      *
-     * @param  string $anno
+     * @param  string                        $anno
      * @return \DateTime|null
      * @throws TransformationFailedException if object (issue) is not found.
      */
     public function reverseTransform($anno)
     {
-        if($anno['type'] == 1)
-        {
+        if ($anno['type'] == 1) {
             $date = new \datetime($anno['date']);
+
             return $date;
-        }
-        else {
+        } else {
             return (int) $anno['date'];
         }
     }

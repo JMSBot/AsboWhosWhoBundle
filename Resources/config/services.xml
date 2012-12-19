@@ -11,10 +11,10 @@
     </parameters>
 
     <services>
- 
+
         <service id="asbo_whoswho.email_manager" class="%asbo_whoswho.email_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
 
-    </services> 
+    </services>
 </container>

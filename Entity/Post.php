@@ -4,7 +4,6 @@ namespace Asbo\WhosWhoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Asbo\WhosWhoBundle\Entity\Post
@@ -56,7 +55,6 @@ class Post
      */
     private $fra;
 
-
     /**
      * Get id
      *
@@ -75,15 +73,14 @@ class Post
      */
     public function setDate($date)
     {
-        if($date instanceof \datetime)
-        {
+        if ($date instanceof \datetime) {
             $this->civilyear = $date;
             $this->anno = null;
-        }
-        else {
+        } else {
             $this->anno = $date;
             $this->civilyear = null;
         }
+
         return $this;
     }
 
@@ -95,6 +92,7 @@ class Post
     public function getDate()
     {
         if($this->getCivilYear() instanceof \DateTime)
+
             return $this->getCivilYear()->format('Y');
         else
             return $this->getAnno();
@@ -109,6 +107,7 @@ class Post
     public function setAnno($anno)
     {
         $this->anno = $anno;
+
         return $this;
     }
 
@@ -131,6 +130,7 @@ class Post
     public function setCivilYear($civilyear)
     {
         $this->civilyear = $civilyear;
+
         return $this;
     }
 
@@ -152,6 +152,7 @@ class Post
     public function setPost(\Asbo\WhosWhoBundle\Entity\PostList $post)
     {
         $this->post = $post;
+
         return $this;
     }
 
@@ -174,6 +175,7 @@ class Post
     public function setFra(\Asbo\WhosWhoBundle\Entity\Fra $fra)
     {
         $this->fra = $fra;
+
         return $this;
     }
 

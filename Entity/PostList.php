@@ -36,7 +36,7 @@ class PostList
      * @Assert\Choice(callback = "getTypeCallbackValidation")
      */
     private $type;
-    
+
     /**
      * @var integer $denier
      *
@@ -67,7 +67,7 @@ class PostList
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -83,13 +83,14 @@ class PostList
     public function setFunction($function)
     {
         $this->function = $function;
+
         return $this;
     }
 
     /**
      * Get function
      *
-     * @return string 
+     * @return string
      */
     public function getFunction()
     {
@@ -105,19 +106,20 @@ class PostList
     public function setType($type)
     {
         $this->type = $type;
+
         return $this;
     }
 
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
         return $this->type;
     }
-    
+
     /**
      * Set denier
      *
@@ -127,9 +129,10 @@ class PostList
     public function setDenier($denier)
     {
         $this->denier = $denier;
+
         return $this;
     }
-    
+
     /**
      * Get denier
      *
@@ -161,11 +164,12 @@ class PostList
     public function getTypeCode()
     {
         $type = self::getTypeList();
+
         return isset($type[$this->getType()]) ? $type[$this->getType()] : null;
     }
 
     /**
-     * Callback Validation 
+     * Callback Validation
      */
     public static function getTypeCallbackValidation()
     {

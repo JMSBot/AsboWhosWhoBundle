@@ -5,7 +5,6 @@ namespace Asbo\WhosWhoBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Doctrine\ORM\EntityRepository;
 use Asbo\WhosWhoBundle\Entity\Email;
 
 class EmailType extends AbstractType

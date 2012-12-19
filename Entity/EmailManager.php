@@ -41,7 +41,7 @@ class EmailManager
     {
         $email = $this->getRepository()->findOneBy(array('fra' => $oldEmail->getFra()));
 
-        if(!empty($email)) {
+        if (!empty($email)) {
             $email->setPrincipal(true);
             $this->persistAndFlush($email);
         }

@@ -4,7 +4,6 @@ namespace Asbo\WhosWhoBundle\Form;
 
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\SecurityContext;
 use Doctrine\ORM\EntityManager;
 use Asbo\WhosWhoBundle\Entity\Fra;
 
@@ -23,12 +22,10 @@ class FraHandler
 
     public function process()
     {
-        if( $this->request->getMethod() == 'POST' )
-        {
+        if ( $this->request->getMethod() == 'POST' ) {
             $this->form->bindRequest($this->request);
 
-            if( $this->form->isValid() )
-            {
+            if ( $this->form->isValid() ) {
                 $this->onSuccess($this->form->getData());
 
                 return true;
@@ -41,8 +38,6 @@ class FraHandler
     public function onSuccess(Fra $fra)
     {
         $this->em->persist($fra);
-
-
 
         $this->em->flush();
     }

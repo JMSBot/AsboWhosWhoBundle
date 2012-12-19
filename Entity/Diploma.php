@@ -84,6 +84,7 @@ class Diploma
     public function setDiploma($diploma)
     {
         $this->diploma = $diploma;
+
         return $this;
     }
 
@@ -106,6 +107,7 @@ class Diploma
     public function setSpecialty($specialty)
     {
         $this->specialty = $specialty;
+
         return $this;
     }
 
@@ -128,6 +130,7 @@ class Diploma
     public function setInstitution($institution)
     {
         $this->institution = $institution;
+
         return $this;
     }
 
@@ -150,6 +153,7 @@ class Diploma
     public function setGraduatedAt($graduatedAt)
     {
         $this->graduatedAt = $graduatedAt;
+
         return $this;
     }
 
@@ -172,6 +176,7 @@ class Diploma
     public function setCurrent($current)
     {
         $this->current = $current;
+
         return $this;
     }
 
@@ -194,6 +199,7 @@ class Diploma
     public function setFra(\Asbo\WhosWhoBundle\Entity\Fra $fra)
     {
         $this->fra = $fra;
+
         return $this;
     }
 

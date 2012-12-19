@@ -1,18 +1,25 @@
 <?php
 
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\WhosWhoBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\Yaml\Yaml;
-
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * AsboWhosWhoExtension.
  *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
+ * @author De Ron Malian <deronmalian@gmail.com>
  */
 class AsboWhosWhoExtension extends Extension
 {
@@ -32,13 +39,5 @@ class AsboWhosWhoExtension extends Extension
         $loader->load('admin.xml');
         $loader->load('form_types.xml');
         $loader->load('twig.xml');
-
-        $this->setParams($config, $container);
-    }
-
-    public function setParams(array $config, ContainerBuilder $container)
-    {
-        //$container->setParameter('asbo.whoswho.version', $config['version']);
-        //$container->setParameter('asbo.whoswho.params.version', $config['params']['version']);
     }
 }

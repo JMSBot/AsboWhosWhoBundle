@@ -80,7 +80,7 @@ class Email
     /**
      * Set email
      *
-     * @param string $email
+     * @param  string $email
      * @return Email
      */
     public function setEmail($email)
@@ -103,12 +103,13 @@ class Email
     /**
      * Set type
      *
-     * @param string $type
+     * @param  string $type
      * @return Email
      */
     public function setType($type)
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -125,12 +126,13 @@ class Email
     /**
      * Set principal
      *
-     * @param boolean $principal
+     * @param  boolean $principal
      * @return Email
      */
     public function setPrincipal($principal)
     {
         $this->principal = $principal;
+
         return $this;
     }
 
@@ -147,12 +149,13 @@ class Email
     /**
      * Set fra
      *
-     * @param Asbo\WhosWhoBundle\Entity\Fra $fra
+     * @param  Asbo\WhosWhoBundle\Entity\Fra $fra
      * @return Email
      */
     public function setFra(\Asbo\WhosWhoBundle\Entity\Fra $fra)
     {
         $this->fra = $fra;
+
         return $this;
     }
 

@@ -8,8 +8,6 @@ use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 use Asbo\WhosWhoBundle\Entity\EmailManager;
 use Asbo\WhosWhoBundle\Entity\Email;
-use Asbo\WhosWhoBundle\Form\EmailAdminType;
-use Knp\Menu\ItemInterface as MenuItemInterface;
 
 class EmailAdmin extends Admin
 {
@@ -49,13 +47,11 @@ class EmailAdmin extends Admin
 
     public function validate(ErrorElement $errorElement, $email)
     {
-        if(!$email->isPrincipal())
-        {
+        if (!$email->isPrincipal()) {
             $emailManager = $this->getEmailManager();
             $emails       = $emailManager->findByFraAndPrincipal($email);
 
-            if(empty($emails) || $emails[0]->getId() === $email->getId())
-            {
+            if (empty($emails) || $emails[0]->getId() === $email->getId()) {
                 $errorElement
                     ->with('principal')
                         ->addViolation($this->trans('error.1', array(), 'AsboWhosWhoBundle'))

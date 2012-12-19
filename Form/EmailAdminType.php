@@ -2,11 +2,7 @@
 
 namespace Asbo\WhosWhoBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Doctrine\ORM\EntityRepository;
-use Asbo\WhosWhoBundle\Entity\Email;
 
 class EmailAdminType extends EmailType
 {

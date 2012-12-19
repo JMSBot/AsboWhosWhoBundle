@@ -5,21 +5,17 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Form\FormMapper;
-use Knp\Menu\ItemInterface as MenuItemInterface;
 
 use Asbo\WhosWhoBundle\Entity\Fra;
 use Asbo\WhosWhoBundle\Entity\Email;
-use Asbo\WhosWhoBundle\Form\Type\EmailType;
 use Asbo\WhosWhoBundle\Form\DataTransformer\DateToAnnoTransformer;
 
 class FraAdmin extends Admin
 {
 
     public $supportsPreviewMode = true;
-
 
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -32,7 +28,7 @@ class FraAdmin extends Admin
 
         $formMapper
             ->with('Général')
-            	->add('firstname')
+                ->add('firstname')
                 ->add('lastname')
                 ->add('nickname')
                 ->add('gender', 'choice', array('choices' => array('Homme', 'Femme')))
@@ -111,8 +107,8 @@ class FraAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('firstname')
-            	   ->addIdentifier('lastname')
-            	   ->addIdentifier('nickname')
+                   ->addIdentifier('lastname')
+                   ->addIdentifier('nickname')
                    ->add('anno', null, array('template' => 'AsboWhosWhoBundle:Admin:list_anno.html.twig'))
                    ->add('getAnnoToDates')
                    ->add('getTypeCode', 'text', array('sortable' => 'type'))

@@ -31,7 +31,7 @@ class DateToAnnoTransformer implements DataTransformerInterface
             self::initializeAnnosList();
 
         return self::$annos;
-    } 
+    }
 
     /**
      * Transforms an object (DateTime) to a string (number).
@@ -49,13 +49,14 @@ class DateToAnnoTransformer implements DataTransformerInterface
         }
 
         $anno = $date->diff(new \DateTime('17-04-1987'))->format('%y');
+
         return $anno;
     }
 
     /**
      * Transforms a string (number) to an object (DateTime).
      *
-     * @param  string $anno
+     * @param  string                        $anno
      * @return \DateTime|null
      * @throws TransformationFailedException if object (issue) is not found.
      */
@@ -68,8 +69,8 @@ class DateToAnnoTransformer implements DataTransformerInterface
             ));
         }
 
-
         $date = new \DateTime('17-04-1987');
+
         return $date->add(new \DateInterval('P'."$anno".'Y'));
     }
 }
