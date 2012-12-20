@@ -1,14 +1,33 @@
 <?php
 
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\WhosWhoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as GEDMO;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Asbo\UserBundle\Entity\User;
+use Asbo\WhosWhoBundle\Entity\Fra;
+use Asbo\WhosWhoBundle\Entity\Email;
+use Asbo\WhosWhoBundle\Entity\Diploma;
+use Asbo\WhosWhoBundle\Entity\Post;
+use Asbo\WhosWhoBundle\Entity\Phone;
+use Asbo\WhosWhoBundle\Entity\Address;
 use Asbo\WhosWhoBundle\Form\DataTransformer\DateToAnnoTransformer;
 
 /**
- * Asbo\WhosWhoBundle\Entity\Fra
+ * Represent a Fra Entity
+ *
+ * @author De Ron Malian <deronmalian@gmail.com>
  *
  * @ORM\Table(name="ww__fras")
  * @ORM\Entity(repositoryClass="Asbo\WhosWhoBundle\Entity\FraRepository")
@@ -126,42 +145,42 @@ class Fra
     private $slug;
 
     /**
-     * @var \stdClass $user
+     * @var Asbo\UserBundle\Entity\User  $user
      *
      * @ORM\ManyToOne(targetEntity="Asbo\UserBundle\Entity\User")
      */
     private $user;
 
     /**
-     * @var emails
+     * @var Asbo\WhosWhoBundle\Entity\Email $emails
      *
      * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\Email", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $emails;
 
     /**
-     * @var diplomas
+     * @var Asbo\WhosWhoBundle\Entity\Diploma $diplomas
      *
      * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\Diploma", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $diplomas;
 
     /**
-     * @var phones
+     * @var Asbo\WhosWhoBundle\Entity\Phone $phones
      *
      * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\Phone", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $phones;
 
     /**
-     * @var posts
+     * @var Asbo\WhosWhoBundle\Entity\Post $posts
      *
      * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\Post", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $posts;
 
     /**
-     * @var addresses
+     * @var Asbo\WhosWhoBundle\Entity\Address $addresses
      *
      * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\Address", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
      */
@@ -175,6 +194,8 @@ class Fra
     private $settings = array();
 
     /**
+     * @var  array $defaultsettings
+     *
      * Default Settings
      */
     private $defaultsettings = array(
@@ -209,9 +230,6 @@ class Fra
     const STATUS_VETERANUS        = 8;
     const STATUS_IN_SPE           = 9;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
         $this->emails    = new \Doctrine\Common\Collections\ArrayCollection();
@@ -233,14 +251,6 @@ class Fra
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * __toString
-     */
-    public function __toString()
-    {
-        return $this->firstname.' '.$this->lastname;
     }
 
     /**
@@ -293,7 +303,7 @@ class Fra
      * Set nickname
      *
      * @param  string $nickname
-     * @return Fra
+     * @return string
      */
     public function setNickname($nickname)
     {
@@ -315,8 +325,8 @@ class Fra
     /**
      * Set gender
      *
-     * @param  boolean $gender
-     * @return Fra
+     * @param boolean $gender
+     * @return $this
      */
     public function setGender($gender)
     {
@@ -338,8 +348,8 @@ class Fra
     /**
      * Set bornAt
      *
-     * @param  \DateTime $bornAt
-     * @return Fra
+     * @param \DateTime $bornAt
+     * @return $this
      */
     public function setBornAt($bornAt)
     {
@@ -361,8 +371,8 @@ class Fra
     /**
      * Set diedAt
      *
-     * @param  \DateTime $diedAt
-     * @return Fra
+     * @param \DateTime $diedAt
+     * @return $this
      */
     public function setDiedAt($diedAt)
     {
@@ -384,8 +394,8 @@ class Fra
     /**
      * Set bornIn
      *
-     * @param  string $bornIn
-     * @return Fra
+     * @param string $bornIn
+     * @return $this
      */
     public function setBornIn($bornIn)
     {
@@ -430,8 +440,8 @@ class Fra
     /**
      * Set type
      *
-     * @param  integer $type
-     * @return Fra
+     * @param integer $type
+     * @return $this
      */
     public function setType($type)
     {
@@ -453,8 +463,8 @@ class Fra
     /**
      * Set status
      *
-     * @param  integer $status
-     * @return Fra
+     * @param integer $status
+     * @return $this
      */
     public function setStatus($status)
     {
@@ -476,8 +486,8 @@ class Fra
     /**
      * Set anno
      *
-     * @param  integer $anno
-     * @return Fra
+     * @param integer $anno
+     * @return $this
      */
     public function setAnno($anno)
     {
@@ -497,22 +507,10 @@ class Fra
     }
 
     /**
-     * Get Anno To Date
-     *
-     * @return \DateTime('%y')
-     */
-    public function getAnnoToDates()
-    {
-        $transformer = new DateToAnnoTransformer();
-
-        return ($transformer->reverseTransform($this->anno)->format('Y') - 1).' - '.$transformer->reverseTransform($this->anno)->format('Y');
-    }
-
-    /**
      * Set pontif
      *
-     * @param  boolean $pontif
-     * @return Fra
+     * @param boolean $pontif
+     * @return $this
      */
     public function setPontif($pontif)
     {
@@ -526,7 +524,7 @@ class Fra
      *
      * @return boolean
      */
-    public function getPontif()
+    public function isPontif()
     {
         return $this->pontif;
     }
@@ -560,7 +558,7 @@ class Fra
      * @param  Asbo\UserBundle\Entity\User $user
      * @return Fra
      */
-    public function setUser(\Asbo\UserBundle\Entity\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 
@@ -578,41 +576,27 @@ class Fra
     }
 
     /**
-     * Count Denier
-     */
-    public function countTotalDenier()
-    {
-        $annoList = DateToAnnoTransformer::getAnnosList();
-        $total    = (end($annoList) - $this->getAnno());
-
-        foreach($this->getPosts() as $post)
-          $total += $post->getPost()->getDenier();
-
-        return $total;
-    }
-
-    /**
-     * Add emails
+     * Add an email
      *
-     * @param  Asbo\WhosWhoBundle\Entity\Email $emails
-     * @return Fra
+     * @param Asbo\WhosWhoBundle\Entity\Email $email
+     * @return $this
      */
-    public function addEmail(\Asbo\WhosWhoBundle\Entity\Email $emails)
+    public function addEmail(Email $email)
     {
-        $emails->setFra($this);
-        $this->emails[] = $emails;
+        $email->setFra($this);
+        $this->emails[] = $email;
 
         return $this;
     }
 
     /**
-     * Remove emails
+     * Remove an email
      *
-     * @param Asbo\WhosWhoBundle\Entity\Email $emails
+     * @param Asbo\WhosWhoBundle\Entity\Email $email
      */
-    public function removeEmail(\Asbo\WhosWhoBundle\Entity\Email $emails)
+    public function removeEmail(Email $email)
     {
-        $this->emails->removeElement($emails);
+        $this->emails->removeElement($email);
     }
 
     /**
@@ -625,7 +609,12 @@ class Fra
         return $this->emails;
     }
 
-    public function setEmails(\Doctrine\Common\Collections\ArrayCollection $emails)
+    /**
+     * Set multiple emails
+     *
+     * @param  $emails Doctrine\Common\Collections\Collection\ArrayCollection
+     */
+    public function setEmails(ArrayCollection $emails)
     {
         foreach ($emails as $email) {
             $email->setFra($this);
@@ -633,6 +622,11 @@ class Fra
         $this->emails = $emails;
     }
 
+    /**
+     * Add mutliple emails
+     *
+     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Email $emails
+     */
     public function addEmails($emails)
     {
         switch (true) {
@@ -652,31 +646,31 @@ class Fra
     }
 
     /**
-     * Add diplomas
+     * Add a diploma
      *
-     * @param  Asbo\WhosWhoBundle\Entity\Diploma $diplomas
-     * @return Fra
+     * @param Asbo\WhosWhoBundle\Entity\Diploma $diploma
+     * @return $this
      */
-    public function addDiploma(\Asbo\WhosWhoBundle\Entity\Diploma $diplomas)
+    public function addDiploma($diploma)
     {
-        $diplomas->setFra($this);
-        $this->diplomas[] = $diplomas;
+        $diploma->setFra($this);
+        $this->diplomas[] = $diploma;
 
         return $this;
     }
 
     /**
-     * Remove emails
+     * Remove a diploma
      *
-     * @param Asbo\WhosWhoBundle\Entity\Email $emails
+     * @param Asbo\WhosWhoBundle\Entity\Email $diploma
      */
-    public function removeDiploma(\Asbo\WhosWhoBundle\Entity\Diploma $diplomas)
+    public function removeDiploma(Diploma $diploma)
     {
-        $this->diplomas->removeElement($diplomas);
+        $this->diplomas->removeElement($diploma);
     }
 
     /**
-     * Get diplomas
+     * Get all diplomas
      *
      * @return Doctrine\Common\Collections\Collection
      */
@@ -685,7 +679,12 @@ class Fra
         return $this->diplomas;
     }
 
-    public function setDiplomas(\Doctrine\Common\Collections\ArrayCollection $diplomas)
+    /**
+     * Set multiple diplomas
+     *
+     * @param \Doctrine\Common\Collections\ArrayCollection $diplomas
+     */
+    public function setDiplomas(ArrayCollection $diplomas)
     {
         foreach ($diplomas as $diploma) {
             $diploma->setFra($this);
@@ -693,6 +692,11 @@ class Fra
         $this->diplomas = $diplomas;
     }
 
+    /**
+     * Add mutliple diplomas
+     *
+     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Diploma $diplomas
+     */
     public function addDiplomas($diplomas)
     {
         switch (true) {
@@ -714,10 +718,10 @@ class Fra
     /**
      * Add post
      *
-     * @param  Asbo\WhosWhoBundle\Entity\Post $post
-     * @return Fra
+     * @param Asbo\WhosWhoBundle\Entity\Post $post
+     * @return $this
      */
-    public function addPost(\Asbo\WhosWhoBundle\Entity\Post $post)
+    public function addPost(Post $post)
     {
         $post->setFra($this);
         $this->posts[] = $post;
@@ -728,15 +732,15 @@ class Fra
     /**
      * Remove post
      *
-     * @param Asbo\WhosWhoBundle\Entity\Email $post
+     * @param Asbo\WhosWhoBundle\Entity\Post $post
      */
-    public function removePost(\Asbo\WhosWhoBundle\Entity\Post $post)
+    public function removePost(Post $post)
     {
         $this->posts->removeElement($post);
     }
 
     /**
-     * Get posts
+     * Get all posts
      *
      * @return Doctrine\Common\Collections\Collection
      */
@@ -745,7 +749,12 @@ class Fra
         return $this->posts;
     }
 
-    public function setPosts(\Doctrine\Common\Collections\ArrayCollection $posts)
+    /**
+     * Set multiple posts
+     *
+     * @param \Doctrine\Common\Collections\ArrayCollection $posts
+     */
+    public function setPosts(ArrayCollection $posts)
     {
         foreach ($posts as $post) {
             $post->setFra($this);
@@ -753,6 +762,11 @@ class Fra
         $this->posts = $posts;
     }
 
+    /**
+     * Add mutliple posts
+     *
+     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Post $posts
+     */
     public function addPosts($posts)
     {
         switch (true) {
@@ -774,10 +788,10 @@ class Fra
     /**
      * Add address
      *
-     * @param  Asbo\WhosWhoBundle\Entity\Address $address
-     * @return Fra
+     * @param Asbo\WhosWhoBundle\Entity\Address $address
+     * @return $this
      */
-    public function addAddress(\Asbo\WhosWhoBundle\Entity\Address $address)
+    public function addAddress(Address $address)
     {
         $address->setFra($this);
         $this->addresses[] = $address;
@@ -790,13 +804,13 @@ class Fra
      *
      * @param Asbo\WhosWhoBundle\Entity\Address $address
      */
-    public function removeAddress(\Asbo\WhosWhoBundle\Entity\Address $address)
+    public function removeAddress(Address $address)
     {
         $this->addresses->removeElement($address);
     }
 
     /**
-     * Get addresss
+     * Get all addresses
      *
      * @return Doctrine\Common\Collections\Collection
      */
@@ -805,7 +819,12 @@ class Fra
         return $this->addresses;
     }
 
-    public function setAddresses(\Doctrine\Common\Collections\ArrayCollection $addresses)
+    /**
+     * Set multiple adresses
+     *
+     * @param \Doctrine\Common\Collections\ArrayCollection $adresses
+     */
+    public function setAddresses(ArrayCollection $addresses)
     {
         foreach ($addresses as $address) {
             $address->setFra($this);
@@ -813,6 +832,11 @@ class Fra
         $this->addresses = $addresses;
     }
 
+    /**
+     * Add mutliple addresses
+     *
+     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Address $addresses
+     */
     public function addAddresses($addresses)
     {
         switch (true) {
@@ -834,10 +858,10 @@ class Fra
     /**
      * Add phone
      *
-     * @param  Asbo\WhosWhoBundle\Entity\Phone $phone
-     * @return Fra
+     * @param Asbo\WhosWhoBundle\Entity\Phone $phone
+     * @return $this
      */
-    public function addPhone(\Asbo\WhosWhoBundle\Entity\Phone $phone)
+    public function addPhone(Phone $phone)
     {
         $phone->setFra($this);
         $this->phones[] = $phone;
@@ -850,7 +874,7 @@ class Fra
      *
      * @param Asbo\WhosWhoBundle\Entity\Phone $phone
      */
-    public function removePhone(\Asbo\WhosWhoBundle\Entity\Phone $phone)
+    public function removePhone(Phone $phone)
     {
         $this->phones->removeElement($phone);
     }
@@ -868,10 +892,10 @@ class Fra
     /**
      * Set multiple phone number
      *
-     * @return Fra
-     * @param  ArrayCollection $phones
+     * @return $this
+     * @param ArrayCollection $phones
      **/
-    public function setPhones(\Doctrine\Common\Collections\ArrayCollection $phones)
+    public function setPhones(ArrayCollection $phones)
     {
         foreach ($phones as $phone) {
             $phone->setFra($this);
@@ -880,7 +904,11 @@ class Fra
 
         return $this;
     }
-
+    /**
+     * Add mutliple phone number
+     *
+     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Phone $phones
+     */
     public function addPhones($phones)
     {
         switch (true) {
@@ -902,8 +930,8 @@ class Fra
     /**
      * Set settings
      *
-     * @param  array    $settings
-     * @return Settings
+     * @param  array $settings
+     * @return array
      */
     public function setSettings($settings)
     {
@@ -924,6 +952,8 @@ class Fra
 
     /**
      * Get Type List
+     *
+     * @return array
      */
     public static function getTypeList()
     {
@@ -937,6 +967,8 @@ class Fra
 
     /**
      * Get Type Code
+     *
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -947,6 +979,8 @@ class Fra
 
     /**
      * Get Status List
+     *
+     * @return array
      */
     public static function getStatusList()
     {
@@ -967,11 +1001,40 @@ class Fra
 
     /**
      * Get Status Code
+     *
+     * @return string|null
      */
     public function getStatusCode()
     {
         $status = self::getStatusList();
 
         return isset($status[$this->getStatus()]) ? $status[$this->getStatus()] : null;
+    }
+
+    /**
+     * Count total denier
+     *
+     * @return integer
+     */
+    public function countTotalDenier()
+    {
+        $annoList = DateToAnnoTransformer::getAnnosList();
+        $total    = (end($annoList) - $this->getAnno());
+
+        foreach ($this->getPosts() as $post) {
+            $total += $post->getPost()->getDenier();
+        }
+
+        return $total;
+    }
+
+    /**
+     * Auto-render on toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->firstname.' '.$this->lastname;
     }
 }

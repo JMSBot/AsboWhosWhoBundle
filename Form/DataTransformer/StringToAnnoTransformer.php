@@ -1,40 +1,51 @@
 <?php
+
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\WhosWhoBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
-use Symfony\Component\Form\Exception\TransformationFailedException;
 
+/**
+ * String to anno transformer
+ *
+ * @todo Hum hum ! Revoir la manière de faire !
+ * @author De Ron Malian <deronmalian@gmail.com>
+ */
 class StringToAnnoTransformer implements DataTransformerInterface
 {
-
     /**
-     * Transforms an object (DateTime) to a string (number).
+     * Transforms an object ($date) to an array option
      *
-     * @param  Issue|null $datetime
-     * @return string
+     * @param  \Datetime|null $date
+     * @return array
      */
     public function transform($date)
     {
-        if($date instanceof \DateTime)
-
+        if ($date instanceof \DateTime) {
             return array('type' => (int) 1, 'date' => $date);
-        else
+        } else {
             return array('type' => (int) 0, 'date' => $date);
+        }
     }
 
     /**
-     * Transforms a string (number) to an object (DateTime).
+     * Transforms an array options to an number|date
      *
-     * @param  string                        $anno
+     * @param  array          $anno
      * @return \DateTime|null
-     * @throws TransformationFailedException if object (issue) is not found.
      */
     public function reverseTransform($anno)
     {
         if ($anno['type'] == 1) {
-            $date = new \datetime($anno['date']);
-
-            return $date;
+            return new \datetime($anno['date']);
         } else {
             return (int) $anno['date'];
         }

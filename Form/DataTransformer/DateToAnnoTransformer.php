@@ -1,23 +1,45 @@
 <?php
+
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\WhosWhoBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 
+/**
+ * Date to anno transformer
+ *
+ * @todo A supprimer
+ * @author De Ron Malian <deronmalian@gmail.com>
+ */
 class DateToAnnoTransformer implements DataTransformerInterface
 {
 
+    /**
+     * Array of allowed annos
+     *
+     * @var array
+     */
     protected static $annos = array();
 
-    /**
-     * Construct
-     */
     public function __construct()
     {
-        if(empty(self::$annos))
+        if (empty(self::$annos)) {
             self::initializeAnnosList();
+        }
     }
 
+    /**
+     * Initialise the allowed annos
+     */
     public static function initializeAnnosList()
     {
         $date        = new \DateTime('now');
@@ -25,10 +47,16 @@ class DateToAnnoTransformer implements DataTransformerInterface
         self::$annos = range(0, $anno);
     }
 
+    /**
+     * Get annos
+     *
+     * @return array
+     */
     public static function getAnnosList()
     {
-        if(empty(self::$annos))
+        if (empty(self::$annos)) {
             self::initializeAnnosList();
+        }
 
         return self::$annos;
     }
@@ -36,8 +64,9 @@ class DateToAnnoTransformer implements DataTransformerInterface
     /**
      * Transforms an object (DateTime) to a string (number).
      *
-     * @param  Issue|null $datetime
+     * @param  \Datetime|null $datetime
      * @return string
+     * @todo  Vérifier se comportement ou tout du moins le commenter
      */
     public function transform($date)
     {
@@ -58,15 +87,12 @@ class DateToAnnoTransformer implements DataTransformerInterface
      *
      * @param  string                        $anno
      * @return \DateTime|null
-     * @throws TransformationFailedException if object (issue) is not found.
+     * @throws TransformationFailedException if $anno is not defined
      */
     public function reverseTransform($anno)
     {
         if (null === $anno) {
-            throw new TransformationFailedException(sprintf(
-                'L\'anno "%s" n\'existe pas à l\'ASBO',
-                $anno
-            ));
+            throw new TransformationFailedException(sprintf('L\'anno "%s" n\'existe pas à l\'ASBO', $anno));
         }
 
         $date = new \DateTime('17-04-1987');

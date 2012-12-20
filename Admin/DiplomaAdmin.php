@@ -1,31 +1,46 @@
 <?php
+
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\WhosWhoBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
+/**
+ * Diploma admin for SonataAdminBundle
+ *
+ * @author De Ron Malian <deronmalian@gmail.com>
+ */
 class DiplomaAdmin extends Admin
 {
+    /**
+     * {@inheritDoc}
+     */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('diploma')
                    ->add('specialty')
                    ->add('institution')
                    ->add('current')
-                   ->add('graduatedAt')
-        ;
+                   ->add('graduatedAt');
 
-        if($this->getRequest()->get('_sonata_admin') === 'asbo.whoswho.admin.fra.diploma')
+        if ($this->getRequest()->get('_sonata_admin') === 'asbo.whoswho.admin.fra.diploma') {
             $formMapper->add('fra', 'sonata_type_model_list');
+        }
     }
 
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-
-    }
-
+    /**
+     * {@inheritDoc}
+     */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('diploma')
@@ -33,7 +48,6 @@ class DiplomaAdmin extends Admin
                    ->add('institution')
                    ->add('current')
                    ->add('graduatedAt')
-                   ->add('fra')
-        ;
+                   ->add('fra');
     }
 }

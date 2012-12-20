@@ -1,12 +1,25 @@
 <?php
 
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\WhosWhoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Asbo\WhosWhoBundle\Entity\PostList;
+use Asbo\WhosWhoBundle\Entity\Fra;
 
 /**
- * Asbo\WhosWhoBundle\Entity\Post
+ * Represent a Post Entity
+ *
+ * @author De Ron Malian <deronmalian@gmail.com>
  *
  * @ORM\Table(name="ww__posts")
  * @ORM\Entity(repositoryClass="Asbo\WhosWhoBundle\Entity\PostRepository")
@@ -32,7 +45,7 @@ class Post
     private $anno;
 
     /**
-     * @var integer $civilyear
+     * @var date $civilyear
      *
      * @ORM\Column(name="civilyear", type="date", nullable=true)
      * @Assert\Type(type="datetime")
@@ -68,8 +81,9 @@ class Post
     /**
      * Set date
      *
-     * @param string $date
+     * @param string|\Datetime $date
      * @return $this
+     * @todo Vérifier le type de la date
      */
     public function setDate($date)
     {
@@ -88,20 +102,21 @@ class Post
      * Get date
      *
      * @return string
+     * @todo Vérifier le type de la date
      */
     public function getDate()
     {
-        if($this->getCivilYear() instanceof \DateTime)
-
+        if ($this->getCivilYear() instanceof \DateTime) {
             return $this->getCivilYear()->format('Y');
-        else
+        } else {
             return $this->getAnno();
+        }
     }
 
     /**
      * Set anno
      *
-     * @param string $anno
+     * @param integer $anno
      * @return $this
      */
     public function setAnno($anno)
@@ -114,20 +129,20 @@ class Post
     /**
      * Get anno
      *
-     * @return string
+     * @return integer
      */
     public function getAnno()
     {
         return $this->anno;
     }
 
-        /**
+    /**
      * Set civilyear
      *
-     * @param string $civilyear
+     * @param date $civilyear
      * @return $this
      */
-    public function setCivilYear($civilyear)
+    public function setCivilYear(\Datetime $civilyear)
     {
         $this->civilyear = $civilyear;
 
@@ -137,7 +152,7 @@ class Post
     /**
      * Get civilyear
      *
-     * @return string
+     * @return date
      */
     public function getCivilYear()
     {
@@ -149,7 +164,7 @@ class Post
      *
      * @param Asbo\WhosWhoBundle\Entity\PostList $post
      */
-    public function setPost(\Asbo\WhosWhoBundle\Entity\PostList $post)
+    public function setPost(PostList $post)
     {
         $this->post = $post;
 
@@ -172,7 +187,7 @@ class Post
      * @param Asbo\WhosWhoBundle\Entity\Fra $fra
      * @return $this
      */
-    public function setFra(\Asbo\WhosWhoBundle\Entity\Fra $fra)
+    public function setFra(Fra $fra)
     {
         $this->fra = $fra;
 
@@ -190,7 +205,9 @@ class Post
     }
 
     /**
-     * __toString
+     * Auto-render on toString
+     *
+     * @return string
      */
     public function __toString()
     {

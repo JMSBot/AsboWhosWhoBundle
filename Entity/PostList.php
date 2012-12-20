@@ -1,18 +1,39 @@
 <?php
 
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\WhosWhoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Asbo\WhosWhoBundle\Entity\PostList
+ * Represent a PostList Entity
+ *
+ * @author De Ron Malian <deronmalian@gmail.com>
  *
  * @ORM\Table(name="ww__postList")
  * @ORM\Entity(repositoryClass="Asbo\WhosWhoBundle\Entity\PostListRepository")
  */
 class PostList
 {
+    /**
+     * Type Post
+     */
+    const TYPE_COMITE          = 0;
+    const TYPE_CONSEIL         = 1;
+    const TYPE_COMISSION       = 2;
+    const TYPE_COMITE_VETERANS = 3;
+    const TYPE_PONTIFES        = 4;
+    const TYPE_FSB             = 5;
+
     /**
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -30,7 +51,7 @@ class PostList
     private $function;
 
     /**
-     * @var string $type
+     * @var integer $type
      *
      * @ORM\Column(name="type", type="integer")
      * @Assert\Choice(callback = "getTypeCallbackValidation")
@@ -45,16 +66,6 @@ class PostList
      * @Assert\Min(limit="0")
      */
     private $denier;
-
-    /**
-     * Type Post
-     */
-    const TYPE_COMITE          = 0;
-    const TYPE_CONSEIL         = 1;
-    const TYPE_COMISSION       = 2;
-    const TYPE_COMITE_VETERANS = 3;
-    const TYPE_PONTIFES        = 4;
-    const TYPE_FSB             = 5;
 
     /**
      * __toString()
@@ -100,7 +111,7 @@ class PostList
     /**
      * Set type
      *
-     * @param string $type
+     * @param integer $type
      * @return $this
      */
     public function setType($type)
@@ -113,7 +124,7 @@ class PostList
     /**
      * Get type
      *
-     * @return string
+     * @return integer
      */
     public function getType()
     {
@@ -145,6 +156,8 @@ class PostList
 
     /**
      * Get Type List
+     *
+     * @return array
      */
     public static function getTypeList()
     {
@@ -160,6 +173,8 @@ class PostList
 
     /**
      * Get Type Code
+     *
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -170,10 +185,11 @@ class PostList
 
     /**
      * Callback Validation
+     *
+     * @return array
      */
     public static function getTypeCallbackValidation()
     {
         return array_keys(self::getTypeList());
     }
-
 }

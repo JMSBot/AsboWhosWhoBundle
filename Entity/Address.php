@@ -1,19 +1,38 @@
 <?php
 
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\WhosWhoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Asbo\CoreBundle\Entity\AbstractGMapEntity;
+use Asbo\WhosWhoBundle\Entity\Fra;
 
 /**
- * Asbo\WhosWhoBundle\Entity\Address
+ * Represent an Address Entity
+ *
+ * @author De Ron Malian <deronmalian@gmail.com>
  *
  * @ORM\Table(name="ww__addresss")
  * @ORM\Entity(repositoryClass="Asbo\WhosWhoBundle\Entity\AddressRepository")
  */
 class Address extends AbstractGMapEntity
 {
+
+    const TYPE_PRIVEE  = 0;
+    const TYPE_KOT     = 1;
+    const TYPE_PARENTS = 2;
+    const TYPE_BOULOT  = 3;
+    const TYPE_AUTRE   = 4;
+
     /**
      * @var integer $id
      *
@@ -31,12 +50,6 @@ class Address extends AbstractGMapEntity
      */
     private $type;
 
-    const TYPE_PRIVEE  = 0;
-    const TYPE_KOT     = 1;
-    const TYPE_PARENTS = 2;
-    const TYPE_BOULOT  = 3;
-    const TYPE_AUTRE   = 4;
-
     /**
      * @var boolean $principal
      *
@@ -46,6 +59,8 @@ class Address extends AbstractGMapEntity
     private $principal;
 
     /**
+     * @var Asbo\WhosWhoBundle\Entity\Fra
+     *
      * @ORM\ManyToOne(targetEntity="Asbo\WhosWhoBundle\Entity\Fra", inversedBy="addresses")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
@@ -102,7 +117,7 @@ class Address extends AbstractGMapEntity
      *
      * @return boolean
      */
-    public function getPrincipal()
+    public function isPrincipal()
     {
         return $this->principal;
     }
@@ -113,7 +128,7 @@ class Address extends AbstractGMapEntity
      * @param Asbo\WhosWhoBundle\Entity\Fra $fra
      * @return $this
      */
-    public function setFra(\Asbo\WhosWhoBundle\Entity\Fra $fra)
+    public function setFra(Fra $fra)
     {
         $this->fra = $fra;
 
@@ -132,6 +147,8 @@ class Address extends AbstractGMapEntity
 
     /**
      * Is Princpal Adress
+     *
+     * @return boolean
      */
     public function isPrincipal()
     {
@@ -140,6 +157,8 @@ class Address extends AbstractGMapEntity
 
     /**
      * Get TypeList
+     *
+     * @return array
      */
     public static function getTypeList()
     {
@@ -154,6 +173,8 @@ class Address extends AbstractGMapEntity
 
     /**
      * Get Type Code
+     *
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -164,10 +185,21 @@ class Address extends AbstractGMapEntity
 
     /**
      * Callback Validation
+     *
+     * @return array
      */
     public static function getTypeCallbackValidation()
     {
         return array_keys(self::getTypeList());
     }
 
+    /**
+     * Auto-render on toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getAddress();
+    }
 }

@@ -1,19 +1,41 @@
 <?php
 
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\WhosWhoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Locale\Locale;
+use Asbo\WhosWhoBundle\Entity\Fra;
 
 /**
- * Asbo\WhosWhoBundle\Entity\Phone
+ * Represent a Phone Entity
+ *
+ * @author De Ron Malian <deronmalian@gmail.com>
  *
  * @ORM\Table(name="ww__phones")
  * @ORM\Entity(repositoryClass="Asbo\WhosWhoBundle\Entity\PhoneRepository")
  */
 class Phone
 {
+    /**
+     * Type Phone
+     */
+    const TYPE_PRIVEE  = 0;
+    const TYPE_PARENTS = 1;
+    const TYPE_KOT     = 2;
+    const TYPE_BUREAU  = 3;
+    const TYPE_FAX     = 4;
+    const TYPE_GSM     = 5;
+
     /**
      * @var integer $id
      *
@@ -33,7 +55,7 @@ class Phone
     private $number;
 
     /**
-     * @var string $type
+     * @var integer $type
      *
      * @ORM\Column(name="type", type="integer")
      * @Assert\Choice(callback = "getTypeCallbackValidation")
@@ -60,16 +82,6 @@ class Phone
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $fra;
-
-    /**
-     * Type Phone
-     */
-    const TYPE_PRIVEE  = 0;
-    const TYPE_PARENTS = 1;
-    const TYPE_KOT     = 2;
-    const TYPE_BUREAU  = 3;
-    const TYPE_FAX     = 4;
-    const TYPE_GSM     = 5;
 
     /**
      * Get id
@@ -107,7 +119,7 @@ class Phone
     /**
      * Set type
      *
-     * @param string $type
+     * @param integer $type
      * @return $this
      */
     public function setType($type)
@@ -120,7 +132,7 @@ class Phone
     /**
      * Get type
      *
-     * @return string
+     * @return integer
      */
     public function getType()
     {
@@ -141,7 +153,7 @@ class Phone
     }
 
     /**
-     * Get type
+     * Get contry
      *
      * @return string
      */
@@ -168,7 +180,7 @@ class Phone
      * @param Asbo\WhosWhoBundle\Entity\Fra $fra
      * @return $this
      */
-    public function setFra(\Asbo\WhosWhoBundle\Entity\Fra $fra)
+    public function setFra(Fra $fra)
     {
         $this->fra = $fra;
 
@@ -203,7 +215,7 @@ class Phone
      *
      * @return boolean
      */
-    public function getPrincipal()
+    public function isPrincipal()
     {
         return $this->principal;
     }
@@ -219,7 +231,9 @@ class Phone
     }
 
     /**
-     * Get Type Phone List
+     * Get type phone list number
+     *
+     * @return array
      */
     public static function getTypeList()
     {
@@ -234,7 +248,9 @@ class Phone
     }
 
     /**
-     * Get Type Code
+     * Get type code
+     *
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -245,6 +261,8 @@ class Phone
 
     /**
      * Callback Validation
+     *
+     * @return array
      */
     public static function getTypeCallbackValidation()
     {
@@ -252,11 +270,12 @@ class Phone
     }
 
     /**
-     * __toString
+     * Auto-render on toString
+     *
+     * @return string
      */
     public function __toString()
     {
         return (string) $this->number;
     }
-
 }

@@ -1,18 +1,39 @@
 <?php
 
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\WhosWhoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Asbo\WhosWhoBundle\Entity\Fra;
 
 /**
- * Asbo\WhosWhoBundle\Entity\Family
+ * Represent a Family Entity
+ *
+ * @author De Ron Malian <deronmalian@gmail.com>
  *
  * @ORM\Table(name="ww__family")
  * @ORM\Entity(repositoryClass="Asbo\WhosWhoBundle\Entity\FamilyRepository")
  */
 class Family
 {
+    /**
+     * Type Family Link
+     */
+    const TYPE_ENFANT   = 0;
+    const TYPE_AMI      = 1;
+    const TYPE_FIANCE   = 2;
+    const TYPE_CONJOINT = 3;
+    const TYPE_AUTRE    = 4;
+
     /**
      * @var integer $id
      *
@@ -44,7 +65,7 @@ class Family
     private $date;
 
     /**
-     * @var string $type
+     * @var integer $type
      *
      * @ORM\Column(name="type", type="integer")
      * @Assert\Choice(callback = "getTypeCallbackValidation")
@@ -52,24 +73,19 @@ class Family
     private $type;
 
     /**
+     * @var Asbo\WhosWhoBundle\Entity\Fra
+     *
      * @ORM\ManyToOne(targetEntity="Asbo\WhosWhoBundle\Entity\Fra", inversedBy="id")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $fra;
 
     /**
+     * @var Asbo\WhosWhoBundle\Entity\Fra
+     *
      * @ORM\ManyToOne(targetEntity="Asbo\WhosWhoBundle\Entity\Fra")
      */
     private $link;
-
-    /**
-     * Type Phone
-     */
-    const TYPE_ENFANT   = 0;
-    const TYPE_AMI      = 1;
-    const TYPE_FIANCE   = 2;
-    const TYPE_CONJOINT = 3;
-    const TYPE_AUTRE    = 4;
 
     /**
      * Get id
@@ -179,7 +195,7 @@ class Family
      * @param Asbo\WhosWhoBundle\Entity\Fra $fra
      * @return $this
      */
-    public function setFra(\Asbo\WhosWhoBundle\Entity\Fra $fra)
+    public function setFra(Fra $fra)
     {
         $this->fra = $fra;
 
@@ -220,19 +236,9 @@ class Family
     }
 
     /**
-     * to String
-     */
-    public function __toString()
-    {
-        if(empty($this->link))
-
-            return $this->firstname.' '.$this->lastname;
-
-        return (string) $this->link;
-    }
-
-    /**
-     * Get Type Phone List
+     * Get Family type link list
+     *
+     * @return array
      */
     public static function getTypeList()
     {
@@ -247,6 +253,8 @@ class Family
 
     /**
      * Get Type Code
+     *
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -257,9 +265,25 @@ class Family
 
     /**
      * Callback Validation
+     *
+     * @return array
      */
     public static function getTypeCallbackValidation()
     {
         return array_keys(self::getTypeList());
+    }
+
+    /**
+     * Auto-render on toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        if (empty($this->link)) {
+            return $this->firstname.' '.$this->lastname;
+        }
+
+        return (string) $this->link;
     }
 }

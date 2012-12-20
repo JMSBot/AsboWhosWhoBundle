@@ -1,12 +1,24 @@
 <?php
 
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\WhosWhoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Asbo\WhosWhoBundle\Entity\Fra;
 
 /**
- * Asbo\WhosWhoBundle\Entity\Diploma
+ * Represent an Diploma Entity
+ *
+ * @author De Ron Malian <deronmalian@gmail.com>
  *
  * @ORM\Table(name="ww__diplomas")
  * @ORM\Entity(repositoryClass="Asbo\WhosWhoBundle\Entity\DiplomaRepository")
@@ -60,6 +72,8 @@ class Diploma
     private $current;
 
     /**
+     * @var Asbo\WhosWhoBundle\Entity\Fra
+     *
      * @ORM\ManyToOne(targetEntity="Asbo\WhosWhoBundle\Entity\Fra", inversedBy="diplomas")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
@@ -196,7 +210,7 @@ class Diploma
      * @param Asbo\WhosWhoBundle\Entity\Fra $fra
      * @return $this
      */
-    public function setFra(\Asbo\WhosWhoBundle\Entity\Fra $fra)
+    public function setFra(Fra $fra)
     {
         $this->fra = $fra;
 
@@ -214,7 +228,9 @@ class Diploma
     }
 
     /**
-     * __toString
+     * Auto-render on toString
+     *
+     * @return string
      */
     public function __toString()
     {

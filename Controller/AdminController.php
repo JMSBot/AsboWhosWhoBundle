@@ -40,10 +40,12 @@ class AdminController extends Controller
      */
     public function dashboardAction()
     {
-        return $this->render('AsboWhosWhoBundle:Admin:dashboard.html.twig', array(
-            'base_template'   => $this->getBaseTemplate(),
-            'admin_pool'      => $this->container->get('sonata.admin.pool'),
-            'blocks'          => $this->container->getParameter('sonata.admin.configuration.dashboard_blocks'),
-        ));
+        return $this->render(
+            'AsboWhosWhoBundle:Admin:dashboard.html.twig',
+            array(
+                'base_template'   => $this->getBaseTemplate(),
+                'admin_pool'      => $this->container->get('sonata.admin.pool'),
+                'blocks'          => $this->container->getParameter('sonata.admin.configuration.dashboard_blocks'))
+        );
     }
 }
