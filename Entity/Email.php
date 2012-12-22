@@ -144,13 +144,13 @@ class Email
     }
 
     /**
-     * Get principal
+     * Is the principal Email
      *
-     * @return boolean
+     * @return Boolean
      */
     public function isPrincipal()
     {
-        return $this->principal;
+        return $this->principal == true;
     }
 
     /**
@@ -174,16 +174,6 @@ class Email
     public function getFra()
     {
         return $this->fra;
-    }
-
-    /**
-     * Is the principal Email
-     *
-     * @return Boolean
-     */
-    public function isPrincipal()
-    {
-        return $this->principal == true;
     }
 
     /**

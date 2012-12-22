@@ -211,16 +211,6 @@ class Phone
     }
 
     /**
-     * Get principal
-     *
-     * @return boolean
-     */
-    public function isPrincipal()
-    {
-        return $this->principal;
-    }
-
-    /**
      * Is Princpal number
      *
      * @return boolean

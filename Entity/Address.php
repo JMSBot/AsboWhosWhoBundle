@@ -113,13 +113,13 @@ class Address extends AbstractGMapEntity
     }
 
     /**
-     * Get principal
+     * Is Princpal Adress
      *
      * @return boolean
      */
     public function isPrincipal()
     {
-        return $this->principal;
+        return true === $this->principal;
     }
 
     /**
@@ -143,16 +143,6 @@ class Address extends AbstractGMapEntity
     public function getFra()
     {
         return $this->fra;
-    }
-
-    /**
-     * Is Princpal Adress
-     *
-     * @return boolean
-     */
-    public function isPrincipal()
-    {
-        return true === $this->principal;
     }
 
     /**
