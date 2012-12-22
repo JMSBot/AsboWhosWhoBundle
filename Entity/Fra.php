@@ -148,6 +148,7 @@ class Fra
      * @var Asbo\UserBundle\Entity\User  $user
      *
      * @ORM\ManyToOne(targetEntity="Asbo\UserBundle\Entity\User")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $user;
 
