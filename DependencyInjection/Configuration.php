@@ -27,7 +27,19 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode    = $treeBuilder->root('asbo_whos_who')->children();
+        $rootNode    = $treeBuilder->root('asbo_whos_who');
+
+        $rootNode->children()
+                    ->arrayNode('redirect_profile_user')
+                        ->addDefaultsIfNotSet()
+                        ->children()
+                            ->booleanNode('enabled')->defaultTrue()->end()
+                            ->scalarNode('route')->cannotBeEmpty()->defaultValue('sonata_user_profile_show')->end()
+                            ->scalarNode('new')->cannotBeEmpty()->defaultValue('homepage')->end()
+                            ->scalarNode('listener')->cannotBeEmpty()->defaultValue('Asbo\WhosWhoBundle\EventListener\ProfileListener')->end()
+                        ->end()
+                    ->end()
+                ->end();
 
         return $treeBuilder;
     }
