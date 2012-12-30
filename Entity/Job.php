@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Job
  *
- * @ORM\Table()
+ * @ORM\Table(name="ww__jobs")
  * @ORM\Entity(repositoryClass="Asbo\WhosWhoBundle\Entity\JobRepository")
  */
 class Job
