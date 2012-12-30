@@ -21,5 +21,9 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
 
+        <service id="form.type.date_range" class="Asbo\WhosWhoBundle\Form\Type\DateRangeType">
+            <tag name="form.type" alias="date_range" />
+        </service>
+
     </services>
 </container>

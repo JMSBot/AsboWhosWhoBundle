@@ -22,6 +22,7 @@ use Asbo\WhosWhoBundle\Entity\Diploma;
 use Asbo\WhosWhoBundle\Entity\Post;
 use Asbo\WhosWhoBundle\Entity\Phone;
 use Asbo\WhosWhoBundle\Entity\Address;
+use Asbo\WhosWhoBundle\Entity\Job;
 use Asbo\WhosWhoBundle\Form\DataTransformer\DateToAnnoTransformer;
 
 /**
@@ -194,6 +195,13 @@ class Fra
      * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\Address", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $addresses;
+
+    /**
+     * @var Asbo\WhosWhoBundle\Entity\Job $jobs
+     *
+     * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\Job", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $jobs;
 
     /**
      * @var array $settings
@@ -674,6 +682,76 @@ class Fra
                 break;
             default:
                 throw new \Exception('Unknown parameter type: ' . var_dump($emails, true));
+        }
+    }
+
+    /**
+     * Add an job
+     *
+     * @param Asbo\WhosWhoBundle\Entity\Job $job
+     * @return $this
+     */
+    public function addJob(Job $job)
+    {
+        $job->setFra($this);
+        $this->jobs[] = $job;
+
+        return $this;
+    }
+
+    /**
+     * Remove an job
+     *
+     * @param Asbo\WhosWhoBundle\Entity\Job $job
+     */
+    public function removeJob(Job $job)
+    {
+        $this->jobs->removeElement($job);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
+    }
+
+    /**
+     * Set multiple jobs
+     *
+     * @param  $jobs Doctrine\Common\Collections\Collection\ArrayCollection
+     */
+    public function setJobs(ArrayCollection $jobs)
+    {
+        foreach ($jobs as $job) {
+            $job->setFra($this);
+        }
+        $this->jobs = $jobs;
+    }
+
+    /**
+     * Add mutliple jobs
+     *
+     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Job $jobs
+     */
+    public function addJobs($jobs)
+    {
+        switch (true) {
+            case is_array($jobs):
+                $jobs       = new ArrayCollection($jobs);
+                $this->setJobs($jobs);
+                break;
+            case $jobs instanceof ArrayCollection:
+                $this->setJobs($jobs);
+                break;
+            case $jobs instanceof Job:
+                $this->addJob($jobs);
+                break;
+            default:
+                throw new \Exception('Unknown parameter type: ' . var_dump($jobs, true));
         }
     }
 

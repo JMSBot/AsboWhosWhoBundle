@@ -66,6 +66,10 @@ class FraAdmin extends Admin
                 ->add('emails', 'sonata_type_collection', array(), array('edit' => 'inline', 'inline' => 'table', 'link_parameters' => $link_parameters))
             ->end()
 
+            ->with('Jobs', array('collapsed' => true))
+                ->add('jobs', 'sonata_type_collection', array(), array('edit' => 'inline', 'inline' => 'table',))
+            ->end()
+
             ->with('Téléphones', array('collapsed' => true))
                 ->add('phones', 'sonata_type_collection', array(), array('edit' => 'inline', 'inline' => 'table',))
             ->end()
@@ -177,6 +181,11 @@ class FraAdmin extends Admin
         $diplomas = $entity->getDiplomas();
         foreach ($diplomas as $diploma) {
             $diploma->setFra($entity);
+        }
+
+        $jobs = $entity->getJobs();
+        foreach ($jobs as $job) {
+            $job->setFra($entity);
         }
     }
 
