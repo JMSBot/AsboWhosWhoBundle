@@ -8,6 +8,7 @@
         <service id="asbo_whoswho.listener.profile" class="%asbo_whoswho.profile.listener.class%">
             <argument type="service" id="router" />
             <argument type="service" id="security.context" />
+            <argument type="service" id="asbo_whoswho.fra_manager" />
             <argument>%asbo_whoswho.profile.listener.route%</argument>
             <argument>%asbo_whoswho.profile.listener.new%</argument>
             <tag name="kernel.event_listener" event="kernel.request" method="onCoreController" />

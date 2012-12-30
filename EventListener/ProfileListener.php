@@ -16,6 +16,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Router;
+use Asbo\WhosWhoBundle\Entity\FraManager;
 
 /**
  * Profile event listener
@@ -32,6 +33,12 @@ class ProfileListener
     /**
      * @var Symfony\Component\Security\Core\SecurityContext $securityContext
      */
+    public $securityContext;
+
+    /**
+     * @var Asbo\WhosWhoBundle\Entity\FraManager  $fraManager
+     */
+    public $fraManager;
 
     /**
      * @var string $route
@@ -43,10 +50,11 @@ class ProfileListener
      */
     public $newRoute;
 
-    public function __construct(Router $router, SecurityContext $securityContext, $route, $newRoute)
+    public function __construct(Router $router, SecurityContext $securityContext, FraManager $fraManager, $route, $newRoute)
     {
         $this->router          = $router;
         $this->securityContext = $securityContext;
+        $this->fraManager      = $fraManager;
         $this->route           = $route;
         $this->newRoute        = $newRoute;
     }
@@ -55,15 +63,21 @@ class ProfileListener
      * Event called when a user going to his profile and if he is en ROLE_WHOSWHO_USER
      *
      * @param FilterControllerEvent $event
+     * @todo  Ne reste plus qu'a rediriger l'utilisateur vers son profil who's who
      */
     public function onCoreController(GetResponseEvent $event)
     {
         if (HttpKernelInterface::MASTER_REQUEST === $event->getRequestType()) {
             $routeName = $event->getRequest()->get('_route');
 
-            if ($routeName === $this->route && $this->securityContext->isGranted('ROLE_WHOSWHO_USER')) {
-                $url = $this->router->generate($this->newRoute);
-                $event->setResponse(new RedirectResponse($url));
+            if ($routeName === $this->route) {
+
+                $fras = $this->fraManager->findByUserAndOwner($this->securityContext->getToken()->getUser());
+
+                if (count($fras) > 0) {
+                    $url = $this->router->generate($this->newRoute);
+                    $event->setResponse(new RedirectResponse($url));
+                }
             }
         }
     }

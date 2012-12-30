@@ -153,6 +153,14 @@ class Fra
     private $user;
 
     /**
+     * @var boolean $owner
+     *
+     * @ORM\Column(name="owner", type="boolean", nullable=true)
+     * @ORM\JoinColumn(onDelete="SET NULL")
+     */
+    private $owner;
+
+    /**
      * @var Asbo\WhosWhoBundle\Entity\Email $emails
      *
      * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\Email", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
@@ -528,6 +536,29 @@ class Fra
     public function isPontif()
     {
         return $this->pontif;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param boolean $owner
+     * @return $this
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get Owner
+     *
+     * @return boolean
+     */
+    public function isOwner()
+    {
+        return (true == $this->owner);
     }
 
     /**
