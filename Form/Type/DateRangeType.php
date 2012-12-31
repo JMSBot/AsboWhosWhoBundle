@@ -14,10 +14,10 @@ class DateRangeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-         if ($options['format']) {
+        if ($options['format']) {
             $options['dateBegin']['format'] = $options['format'];
             $options['dateEnd']['format']   = $options['format'];
-         }
+        }
 
          $builder
                ->add('dateBegin', new DateType(), $options['dateBegin'])
