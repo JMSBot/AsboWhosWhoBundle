@@ -17,6 +17,10 @@
             <argument>Asbo\WhosWhoBundle\Entity\Fra</argument>
             <argument>SonataAdminBundle:CRUD</argument>
 
+            <call method="addChild">
+                <argument type="service" id="asbo.whoswho.admin.fra.externalpost" />
+            </call>
+
             <call method="setTranslationDomain">
                 <argument>%asbo_whoswho.translation_domain%</argument>
             </call>
@@ -108,6 +112,17 @@
             <tag name="sonata.admin" manager_type="orm" group="%asbo.whoswho.admin.groupname%" label="job" />
             <argument />
             <argument>Asbo\WhosWhoBundle\Entity\Job</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+
+            <call method="setTranslationDomain">
+                <argument>%asbo_whoswho.translation_domain%</argument>
+            </call>
+        </service>
+
+        <service id="asbo.whoswho.admin.fra.externalPost" class="Asbo\WhosWhoBundle\Admin\externalPostAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="%asbo.whoswho.admin.groupname%" label="externalPost" />
+            <argument />
+            <argument>Asbo\WhosWhoBundle\Entity\ExternalPost</argument>
             <argument>SonataAdminBundle:CRUD</argument>
 
             <call method="setTranslationDomain">
