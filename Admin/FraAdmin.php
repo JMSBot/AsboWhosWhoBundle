@@ -48,8 +48,10 @@ class FraAdmin extends Admin
                 ->add('gender', 'choice', array('choices' => array('Homme', 'Femme')))
                 ->add('bornAt', 'genemu_jquerydate', array('widget' => 'single_text','required' => false))
                 ->add('bornIn')
-                ->add('user')
-                ->add('owner', null, array('value' => true, 'attr' => array('checked' => 'checked'), 'help' => 'Si l\'utilisateur qui est lié n\'est pas l\'utilisateur réel de ce fra, décochez. <br />Par exemple papa Skiltz qui gère le compte de son fils avant qu\'il devienne in spé'))
+                ->add('fraHasUsers', 'sonata_type_collection', array('required' => false), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                    ))
             ->end()
 
             ->with('ASBO')
@@ -128,8 +130,6 @@ class FraAdmin extends Admin
                    ->add('getTypeCode', 'text', array('sortable' => 'type'))
                    ->add('getStatusCode')
                    ->add('pontif', null, array('editable' => true))
-                   ->add('user')
-                   ->add('owner', null, array('editable' => true))
                     ->add('_action', 'actions', array('actions' => array('view' => array(), 'edit' => array(), 'delete' => array())));
     }
 
@@ -214,6 +214,9 @@ class FraAdmin extends Admin
         foreach ($jobs as $job) {
             $job->setFra($entity);
         }
+
+        // fix weird bug with setter object not being call
+        $entity->setFraHasUsers($entity->getFraHasUsers());
     }
 
     /**
@@ -222,6 +225,9 @@ class FraAdmin extends Admin
     public function preUpdate($entity)
     {
         $this->setFraToEntities($entity);
+        foreach ($entity->getFraHasUsers() as $relation) {
+            $relation->preUpdate();
+        }
     }
 
     /**

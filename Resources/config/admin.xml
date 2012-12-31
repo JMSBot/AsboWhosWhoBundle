@@ -11,6 +11,17 @@
 
     <services>
 
+        <service id="asbo.whoswho.admin.fra_has_user" class="Asbo\WhosWhoBundle\Admin\FraHasUserAdmin">
+            <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false" />
+            <argument />
+            <argument>Asbo\WhosWhoBundle\Entity\FraHasUser</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+
+            <call method="setTranslationDomain">
+                <argument>%asbo_whoswho.translation_domain%</argument>
+            </call>
+        </service>
+
         <service id="asbo.whoswho.admin.fra" class="Asbo\WhosWhoBundle\Admin\FraAdmin">
             <tag name="sonata.admin" manager_type="orm" group="%asbo.whoswho.admin.groupname%" label="asbo_fra" label_catalogue="AsboWhosWhoBundle" />
             <argument />

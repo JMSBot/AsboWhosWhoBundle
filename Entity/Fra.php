@@ -147,20 +147,11 @@ class Fra
     private $slug;
 
     /**
-     * @var Asbo\UserBundle\Entity\User  $user
+     * @var Doctrine\Common\Collections\ArrayCollection $fraHasUsers
      *
-     * @ORM\ManyToOne(targetEntity="Asbo\UserBundle\Entity\User")
-     * @ORM\JoinColumn(onDelete="SET NULL")
+     * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\FraHasUser", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
      */
-    private $user;
-
-    /**
-     * @var boolean $owner
-     *
-     * @ORM\Column(name="owner", type="boolean", nullable=true)
-     * @ORM\JoinColumn(onDelete="SET NULL")
-     */
-    private $owner;
+    private $fraHasUsers;
 
     /**
      * @var Asbo\WhosWhoBundle\Entity\Email $emails
@@ -257,11 +248,13 @@ class Fra
 
     public function __construct()
     {
-        $this->emails    = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->diplomas  = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->phones    = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->addresses = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->posts     = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->emails     = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->diplomas   = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->phones     = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->addresses  = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->posts      = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->jobs       = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fraHasUser = new \Doctrine\Common\Collections\ArrayCollection();
 
         // @todo: Trouver un autre moyen de changer la date !!!
         $annos           = DateToAnnoTransformer::getAnnosList();
@@ -555,29 +548,6 @@ class Fra
     }
 
     /**
-     * Set owner
-     *
-     * @param boolean $owner
-     * @return $this
-     */
-    public function setOwner($owner)
-    {
-        $this->owner = $owner;
-
-        return $this;
-    }
-
-    /**
-     * Get Owner
-     *
-     * @return boolean
-     */
-    public function isOwner()
-    {
-        return (true == $this->owner);
-    }
-
-    /**
      * Set slug
      *
      * @param  string $slug
@@ -621,6 +591,36 @@ class Fra
     public function getUser()
     {
         return $this->user;
+    }
+
+     /**
+     * {@inheritdoc}
+     */
+    public function setFraHasUsers($fraHasUsers)
+    {
+        $this->fraHasUsers = new ArrayCollection();
+
+        foreach ($fraHasUsers as $fraHasUser) {
+            $this->addFraHasUsers($fraHasUser);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFraHasUsers()
+    {
+        return $this->fraHasUsers;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addFraHasUsers(FraHasUser $fraHasUser)
+    {
+        $fraHasUser->setFra($this);
+
+        $this->fraHasUsers[] = $fraHasUser;
     }
 
     /**
