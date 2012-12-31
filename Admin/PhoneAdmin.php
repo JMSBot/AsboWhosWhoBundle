@@ -26,6 +26,11 @@ class PhoneAdmin extends Admin
 {
 
     /**
+     * {@inheritdoc}
+     */
+    protected $parentAssociationMapping = 'fra';
+
+    /**
      * {@inheritDoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
@@ -35,7 +40,7 @@ class PhoneAdmin extends Admin
                    ->add('country', 'country')
                    ->add('principal');
 
-        if ($this->getRequest()->get('_sonata_admin') === 'asbo.whoswho.admin.fra.phone') {
+        if (!$this->isChild()) {
             $formMapper->add('fra', 'sonata_type_model_list');
         }
     }

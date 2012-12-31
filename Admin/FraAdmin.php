@@ -34,12 +34,6 @@ class FraAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        if ($this->hasRequest()) {
-            $link_parameters = array('context' => $this->getRequest()->get('context'));
-        } else {
-            $link_parameters = array();
-        }
-
         $formMapper
             ->with('Général')
                 ->add('firstname')
@@ -64,30 +58,6 @@ class FraAdmin extends Admin
             ->with('Autres', array('collapsed' => true))
                 ->add('diedAt', 'genemu_jquerydate', array('widget' => 'single_text','required' => false))
                 ->add('diedIn')
-            ->end()
-
-            ->with('Emails', array('collapsed' => true))
-                ->add('emails', 'sonata_type_collection', array(), array('edit' => 'inline', 'inline' => 'table', 'link_parameters' => $link_parameters))
-            ->end()
-
-            ->with('Jobs', array('collapsed' => true))
-                ->add('jobs', 'sonata_type_collection', array(), array('edit' => 'inline', 'inline' => 'table',))
-            ->end()
-
-            ->with('Téléphones', array('collapsed' => true))
-                ->add('phones', 'sonata_type_collection', array(), array('edit' => 'inline', 'inline' => 'table',))
-            ->end()
-
-            ->with('Adresses', array('collapsed' => true))
-                ->add('addresses', 'sonata_type_collection', array(), array('edit' => 'inline', 'inline' => 'table'))
-            ->end()
-
-            ->with('Postes ASBO', array('collapsed' => true))
-                ->add('posts', 'sonata_type_collection', array(), array('edit' => 'inline', 'inline' => 'table'))
-            ->end()
-
-            ->with('Diplôme et Etudes', array('collapsed' => true))
-                ->add('diplomas', 'sonata_type_collection', array(), array('edit' => 'inline', 'inline' => 'table'))
             ->end()
 
             ->with('Settings', array('collapsed' => true))
@@ -174,49 +144,45 @@ class FraAdmin extends Admin
         );
 
         $menu->addChild(
-            'Postes Extérieurs',
-            array('uri' => $admin->generateUrl('asbo.whoswho.admin.fra.externalpost.list', array('id' => $id)))
+            'Emails',
+            array('uri' => $admin->generateUrl('asbo.whoswho.admin.email.list', array('id' => $id)))
         );
 
-    }
+        $menu->addChild(
+            'Téléphones',
+            array('uri' => $admin->generateUrl('asbo.whoswho.admin.phone.list', array('id' => $id)))
+        );
 
-    /**
-     * @param Asbo\WhosWhoBundle\Entity\Fra
-     */
-    private function setFraToEntities(Fra $entity)
-    {
-        $emails = $entity->getEmails();
-        foreach ($emails as $email) {
-            $email->setFra($entity);
-        }
+        $menu->addChild(
+            'Postes ASBO',
+            array('uri' => $admin->generateUrl('asbo.whoswho.admin.post.list', array('id' => $id)))
+        );
 
-        $phones = $entity->getPhones();
-        foreach ($phones as $phone) {
-            $phone->setFra($entity);
-        }
+        $menu->addChild(
+            'Adresses',
+            array('uri' => $admin->generateUrl('asbo.whoswho.admin.address.list', array('id' => $id)))
+        );
 
-        $posts = $entity->getPosts();
-        foreach ($posts as $post) {
-            $post->setFra($entity);
-        }
+        $menu->addChild(
+            'Diplomes & Etudes',
+            array('uri' => $admin->generateUrl('asbo.whoswho.admin.diploma.list', array('id' => $id)))
+        );
 
-        $addresses = $entity->getAddresses();
-        foreach ($addresses as $address) {
-            $address->setFra($entity);
-        }
+        $menu->addChild(
+            'Jobs',
+            array('uri' => $admin->generateUrl('asbo.whoswho.admin.job.list', array('id' => $id)))
+        );
 
-        $diplomas = $entity->getDiplomas();
-        foreach ($diplomas as $diploma) {
-            $diploma->setFra($entity);
-        }
+        $menu->addChild(
+            'Famille',
+            array('uri' => $admin->generateUrl('asbo.whoswho.admin.family.list', array('id' => $id)))
+        );
 
-        $jobs = $entity->getJobs();
-        foreach ($jobs as $job) {
-            $job->setFra($entity);
-        }
+        $menu->addChild(
+            'Postes Extérieurs',
+            array('uri' => $admin->generateUrl('asbo.whoswho.admin.externalpost.list', array('id' => $id)))
+        );
 
-        // fix weird bug with setter object not being call
-        $entity->setFraHasUsers($entity->getFraHasUsers());
     }
 
     /**
@@ -224,7 +190,7 @@ class FraAdmin extends Admin
      */
     public function preUpdate($entity)
     {
-        $this->setFraToEntities($entity);
+        $entity->setFraHasUsers($entity->getFraHasUsers());
         foreach ($entity->getFraHasUsers() as $relation) {
             $relation->preUpdate();
         }
@@ -235,6 +201,6 @@ class FraAdmin extends Admin
      */
     public function prePersist($entity)
     {
-        $this->setFraToEntities($entity);
+        $entity->setFraHasUsers($entity->getFraHasUsers());
     }
 }

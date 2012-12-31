@@ -24,6 +24,12 @@ use Asbo\WhosWhoBundle\Entity\Family;
  */
 class FamilyAdmin extends Admin
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $parentAssociationMapping = 'fra';
+
     /**
      * {@inheritDoc}
      */
@@ -35,7 +41,7 @@ class FamilyAdmin extends Admin
                    ->add('type', 'choice', array('choices' => Family::getTypeList(), 'expanded' => true, 'multiple' => false))
                    ->add('link', null, array('required' => false));
 
-        if ($this->getRequest()->get('_sonata_admin') === 'asbo.whoswho.admin.fra.family') {
+        if (!$this->isChild()) {
             $formMapper->add('fra', 'sonata_type_model_list');
         }
     }

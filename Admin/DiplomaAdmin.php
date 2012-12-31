@@ -22,6 +22,12 @@ use Sonata\AdminBundle\Form\FormMapper;
  */
 class DiplomaAdmin extends Admin
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $parentAssociationMapping = 'fra';
+
     /**
      * {@inheritDoc}
      */
@@ -30,10 +36,9 @@ class DiplomaAdmin extends Admin
         $formMapper->add('diploma')
                    ->add('specialty')
                    ->add('institution')
-                   ->add('current')
                    ->add('graduatedAt');
 
-        if ($this->getRequest()->get('_sonata_admin') === 'asbo.whoswho.admin.fra.diploma') {
+        if (!$this->isChild()) {
             $formMapper->add('fra', 'sonata_type_model_list');
         }
     }
@@ -46,7 +51,6 @@ class DiplomaAdmin extends Admin
         $listMapper->addIdentifier('diploma')
                    ->add('specialty')
                    ->add('institution')
-                   ->add('current')
                    ->add('graduatedAt')
                    ->add('fra');
     }

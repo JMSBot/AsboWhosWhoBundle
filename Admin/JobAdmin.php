@@ -24,6 +24,12 @@ use Asbo\WhosWhoBundle\Entity\Address;
  */
 class JobAdmin extends Admin
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $parentAssociationMapping = 'fra';
+
     /**
      * {@inheritDoc}
      */
@@ -34,7 +40,7 @@ class JobAdmin extends Admin
                    ->add('position')
                    ->add('date', 'date_range', array('virtual' => true, 'data_class' => 'Asbo\WhosWhoBundle\Entity\Job'));
 
-        if ($this->getRequest()->get('_sonata_admin') === 'asbo.whoswho.admin.fra.job') {
+        if (!$this->isChild()) {
             $formMapper->add('fra', 'sonata_type_model_list');
         }
     }

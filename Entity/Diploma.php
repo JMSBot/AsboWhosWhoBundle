@@ -65,13 +65,6 @@ class Diploma
     private $graduatedAt;
 
     /**
-     * @var boolean $current
-     *
-     * @ORM\Column(name="current", type="boolean", nullable=true)
-     */
-    private $current;
-
-    /**
      * @var Asbo\WhosWhoBundle\Entity\Fra
      *
      * @ORM\ManyToOne(targetEntity="Asbo\WhosWhoBundle\Entity\Fra", inversedBy="diplomas")
@@ -164,7 +157,7 @@ class Diploma
      * @param date $graduatedAt
      * @return $this
      */
-    public function setGraduatedAt($graduatedAt)
+    public function setGraduatedAt($graduatedAt = null)
     {
         $this->graduatedAt = $graduatedAt;
 
@@ -182,26 +175,13 @@ class Diploma
     }
 
     /**
-     * Set current
-     *
-     * @param boolean $current
-     * @return $this
-     */
-    public function setCurrent($current)
-    {
-        $this->current = $current;
-
-        return $this;
-    }
-
-    /**
      * Is current
      *
      * @return boolean
      */
     public function isCurrent()
     {
-        return true === $this->current;
+        return null === $this->getGraduatedAt();
     }
 
     /**

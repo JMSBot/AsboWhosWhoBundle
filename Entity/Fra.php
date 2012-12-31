@@ -625,33 +625,34 @@ class Fra
     }
 
     /**
-     * Add an email
+     * Add a email
      *
-     * @param Asbo\WhosWhoBundle\Entity\Email $email
-     * @return $this
+     * @param \Asbo\WhosWhoBundle\Entity\Email $email
      */
-    public function addEmail(Email $email)
+    public function addEmails(Email $email)
     {
         $email->setFra($this);
         $this->emails[] = $email;
-
-        return $this;
     }
 
     /**
-     * Remove an email
+     * Set emails
      *
-     * @param Asbo\WhosWhoBundle\Entity\Email $email
+     * @param array $emails
      */
-    public function removeEmail(Email $email)
+    public function setEmails($emails)
     {
-        $this->emails->removeElement($email);
+        $this->emails = new \Doctrine\Common\Collections\ArrayCollection;
+
+        foreach ($emails as $email) {
+            $this->addEmails($email);
+        }
     }
 
     /**
      * Get emails
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @return array $emails
      */
     public function getEmails()
     {
@@ -659,69 +660,34 @@ class Fra
     }
 
     /**
-     * Set multiple emails
+     * Add a job
      *
-     * @param  $emails Doctrine\Common\Collections\Collection\ArrayCollection
+     * @param \Asbo\WhosWhoBundle\Entity\Job $job
      */
-    public function setEmails(ArrayCollection $emails)
-    {
-        foreach ($emails as $email) {
-            $email->setFra($this);
-        }
-        $this->emails = $emails;
-    }
-
-    /**
-     * Add mutliple emails
-     *
-     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Email $emails
-     */
-    public function addEmails($emails)
-    {
-        switch (true) {
-            case is_array($emails):
-                $emails       = new ArrayCollection($emails);
-                $this->setEmails($emails);
-                break;
-            case $emails instanceof ArrayCollection:
-                $this->setEmails($emails);
-                break;
-            case $emails instanceof Email:
-                $this->addEmail($emails);
-                break;
-            default:
-                throw new \Exception('Unknown parameter type: ' . var_dump($emails, true));
-        }
-    }
-
-    /**
-     * Add an job
-     *
-     * @param Asbo\WhosWhoBundle\Entity\Job $job
-     * @return $this
-     */
-    public function addJob(Job $job)
+    public function addJobs(Job $job)
     {
         $job->setFra($this);
         $this->jobs[] = $job;
-
-        return $this;
     }
 
     /**
-     * Remove an job
+     * Set jobs
      *
-     * @param Asbo\WhosWhoBundle\Entity\Job $job
+     * @param array $jobs
      */
-    public function removeJob(Job $job)
+    public function setJobs($jobs)
     {
-        $this->jobs->removeElement($job);
+        $this->jobs = new \Doctrine\Common\Collections\ArrayCollection;
+
+        foreach ($jobs as $job) {
+            $this->addJobs($job);
+        }
     }
 
     /**
      * Get jobs
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @return array $jobs
      */
     public function getJobs()
     {
@@ -729,69 +695,34 @@ class Fra
     }
 
     /**
-     * Set multiple jobs
-     *
-     * @param  $jobs Doctrine\Common\Collections\Collection\ArrayCollection
-     */
-    public function setJobs(ArrayCollection $jobs)
-    {
-        foreach ($jobs as $job) {
-            $job->setFra($this);
-        }
-        $this->jobs = $jobs;
-    }
-
-    /**
-     * Add mutliple jobs
-     *
-     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Job $jobs
-     */
-    public function addJobs($jobs)
-    {
-        switch (true) {
-            case is_array($jobs):
-                $jobs       = new ArrayCollection($jobs);
-                $this->setJobs($jobs);
-                break;
-            case $jobs instanceof ArrayCollection:
-                $this->setJobs($jobs);
-                break;
-            case $jobs instanceof Job:
-                $this->addJob($jobs);
-                break;
-            default:
-                throw new \Exception('Unknown parameter type: ' . var_dump($jobs, true));
-        }
-    }
-
-    /**
      * Add a diploma
      *
-     * @param Asbo\WhosWhoBundle\Entity\Diploma $diploma
-     * @return $this
+     * @param \Asbo\WhosWhoBundle\Entity\Diploma $diploma
      */
-    public function addDiploma($diploma)
+    public function addDiplomas(Diploma $diploma)
     {
         $diploma->setFra($this);
         $this->diplomas[] = $diploma;
-
-        return $this;
     }
 
     /**
-     * Remove a diploma
+     * Set diplomas
      *
-     * @param Asbo\WhosWhoBundle\Entity\Email $diploma
+     * @param array $diplomas
      */
-    public function removeDiploma(Diploma $diploma)
+    public function setDiplomas($diplomas)
     {
-        $this->diplomas->removeElement($diploma);
+        $this->diplomas = new \Doctrine\Common\Collections\ArrayCollection;
+
+        foreach ($diplomas as $diploma) {
+            $this->addDiplomas($diploma);
+        }
     }
 
     /**
-     * Get all diplomas
+     * Get diplomas
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @return array $diplomas
      */
     public function getDiplomas()
     {
@@ -799,109 +730,38 @@ class Fra
     }
 
     /**
-     * Set multiple diplomas
+     * Add a post
      *
-     * @param \Doctrine\Common\Collections\ArrayCollection $diplomas
+     * @param \Asbo\WhosWhoBundle\Entity\Post $post
      */
-    public function setDiplomas(ArrayCollection $diplomas)
-    {
-        foreach ($diplomas as $diploma) {
-            $diploma->setFra($this);
-        }
-        $this->diplomas = $diplomas;
-    }
-
-    /**
-     * Add mutliple diplomas
-     *
-     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Diploma $diplomas
-     */
-    public function addDiplomas($diplomas)
-    {
-        switch (true) {
-            case is_array($diplomas):
-                $diplomas = new ArrayCollection($diplomas);
-                $this->setDiplomas($diplomas);
-                break;
-            case $diplomas instanceof ArrayCollection:
-                $this->setDiplomas($diplomas);
-                break;
-            case $diplomas instanceof diploma:
-                $this->addDiploma($diplomas);
-                break;
-            default:
-                throw new \Exception('Unknown parameter type: ' . var_dump($diplomas, true));
-        }
-    }
-
-    /**
-     * Add post
-     *
-     * @param Asbo\WhosWhoBundle\Entity\Post $post
-     * @return $this
-     */
-    public function addPost(Post $post)
+    public function addPosts(Post $post)
     {
         $post->setFra($this);
         $this->posts[] = $post;
-
-        return $this;
     }
 
     /**
-     * Remove post
+     * Set posts
      *
-     * @param Asbo\WhosWhoBundle\Entity\Post $post
+     * @param array $posts
      */
-    public function removePost(Post $post)
+    public function setPosts($posts)
     {
-        $this->posts->removeElement($post);
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection;
+
+        foreach ($posts as $post) {
+            $this->addPosts($post);
+        }
     }
 
     /**
-     * Get all posts
+     * Get posts
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @return array $posts
      */
     public function getPosts()
     {
         return $this->posts;
-    }
-
-    /**
-     * Set multiple posts
-     *
-     * @param \Doctrine\Common\Collections\ArrayCollection $posts
-     */
-    public function setPosts(ArrayCollection $posts)
-    {
-        foreach ($posts as $post) {
-            $post->setFra($this);
-        }
-        $this->posts = $posts;
-    }
-
-    /**
-     * Add mutliple posts
-     *
-     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Post $posts
-     */
-    public function addPosts($posts)
-    {
-        switch (true) {
-            case is_array($posts):
-                $posts = new ArrayCollection($posts);
-                $this->setPosts($posts);
-                break;
-            case $posts instanceof ArrayCollection:
-                $this->setPosts($posts);
-                break;
-            case $posts instanceof Post:
-                $this->addPost($posts);
-                break;
-            default:
-                throw new \Exception('Unknown parameter type: ' . var_dump($posts, true));
-        }
     }
 
     /**
@@ -911,8 +771,8 @@ class Fra
      */
     public function addExternalPosts(ExternalPost $externalPost)
     {
+        $externalPost->setFra($this);
         $this->externalPosts[] = $externalPost;
-        $comment->setFra($this);
     }
 
     /**
@@ -940,145 +800,72 @@ class Fra
     }
 
     /**
-     * Add address
+     * Add a address
      *
-     * @param Asbo\WhosWhoBundle\Entity\Address $address
-     * @return $this
+     * @param \Asbo\WhosWhoBundle\Entity\Address $address
      */
-    public function addAddress(Address $address)
+    public function addAddresses(Address $address)
     {
         $address->setFra($this);
         $this->addresses[] = $address;
-
-        return $this;
     }
 
     /**
-     * Remove address
+     * Set addresses
      *
-     * @param Asbo\WhosWhoBundle\Entity\Address $address
+     * @param array $addresses
      */
-    public function removeAddress(Address $address)
+    public function setAddresses($addresses)
     {
-        $this->addresses->removeElement($address);
+        $this->addresss = new \Doctrine\Common\Collections\ArrayCollection;
+
+        foreach ($addresses as $address) {
+            $this->addAddresses($address);
+        }
     }
 
     /**
-     * Get all addresses
+     * Get addresses
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @return array $addresses
      */
     public function getAddresses()
     {
         return $this->addresses;
     }
-
     /**
-     * Set multiple adresses
+     * Add a phone
      *
-     * @param \Doctrine\Common\Collections\ArrayCollection $adresses
+     * @param \Asbo\WhosWhoBundle\Entity\Phone $phone
      */
-    public function setAddresses(ArrayCollection $addresses)
-    {
-        foreach ($addresses as $address) {
-            $address->setFra($this);
-        }
-        $this->addresses = $addresses;
-    }
-
-    /**
-     * Add mutliple addresses
-     *
-     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Address $addresses
-     */
-    public function addAddresses($addresses)
-    {
-        switch (true) {
-            case is_array($addresses):
-                $addresses = new ArrayCollection($addresses);
-                $this->setAddresses($addresses);
-                break;
-            case $addresses instanceof ArrayCollection:
-                $this->setAddresses($addresses);
-                break;
-            case $addresses instanceof Address:
-                $this->addAddress($addresses);
-                break;
-            default:
-                throw new \Exception('Unknown parameter type: ' . var_dump($addresses, true));
-        }
-    }
-
-    /**
-     * Add phone
-     *
-     * @param Asbo\WhosWhoBundle\Entity\Phone $phone
-     * @return $this
-     */
-    public function addPhone(Phone $phone)
+    public function addPhones(Phone $phone)
     {
         $phone->setFra($this);
         $this->phones[] = $phone;
-
-        return $this;
     }
 
     /**
-     * Remove phone
+     * Set phones
      *
-     * @param Asbo\WhosWhoBundle\Entity\Phone $phone
+     * @param array $phones
      */
-    public function removePhone(Phone $phone)
+    public function setPhones($phones)
     {
-        $this->phones->removeElement($phone);
+        $this->phones = new \Doctrine\Common\Collections\ArrayCollection;
+
+        foreach ($phones as $phone) {
+            $this->addPhones($phone);
+        }
     }
 
     /**
      * Get phones
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @return array $phones
      */
     public function getPhones()
     {
         return $this->phones;
-    }
-
-    /**
-     * Set multiple phone number
-     *
-     * @return $this
-     * @param ArrayCollection $phones
-     **/
-    public function setPhones(ArrayCollection $phones)
-    {
-        foreach ($phones as $phone) {
-            $phone->setFra($this);
-        }
-        $this->phones = $phones;
-
-        return $this;
-    }
-    /**
-     * Add mutliple phone number
-     *
-     * @param array|Doctrine\Common\Collections\Collection\ArrayCollection|Asbo\WhosWhoBundle\Phone $phones
-     */
-    public function addPhones($phones)
-    {
-        switch (true) {
-            case is_array($phones):
-                $phones = new ArrayCollection($phones);
-                $this->setPhones($phones);
-                break;
-            case $phones instanceof ArrayCollection:
-                $this->setPhones($phones);
-                break;
-            case $phones instanceof Phone:
-                $this->addPhone($phones);
-                break;
-            default:
-                throw new \Exception('Unknown parameter type: ' . var_dump($phones, true));
-        }
     }
 
     /**

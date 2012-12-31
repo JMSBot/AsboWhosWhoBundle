@@ -24,16 +24,22 @@ use Asbo\WhosWhoBundle\Entity\Address;
  */
 class AddressAdmin extends Admin
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $parentAssociationMapping = 'fra';
+
     /**
      * {@inheritDoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('address', 'gmap_address', array('data_class' => 'Asbo\WhosWhoBundle\Entity\Address'))
+        $formMapper->add('address', 'gmap_address', array('data_class' => 'Asbo\WhosWhoBundle\Entity\Address', 'help_inline' => 'Déplacer le curseur rouge pour indiquer l\'endroit exact ! '))
                    ->add('type', 'choice', array('choices' => Address::getTypeList(), 'expanded' => false, 'multiple' => false))
                    ->add('principal');
 
-        if ($this->getRequest()->get('_sonata_admin') === 'asbo.whoswho.admin.fra.address') {
+        if (!$this->isChild()) {
             $formMapper->add('fra', 'sonata_type_model_list');
         }
     }

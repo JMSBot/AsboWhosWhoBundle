@@ -26,6 +26,12 @@ use Asbo\WhosWhoBundle\Entity\Email;
  */
 class EmailAdmin extends Admin
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $parentAssociationMapping = 'fra';
+
     /**
      * @var Asbo\WhosWhoBundle\Entity\EmailManager
      */
@@ -40,7 +46,7 @@ class EmailAdmin extends Admin
                    ->add('principal', 'sonata_type_boolean')
                    ->add('type', 'choice', array('choices' => Email::getEmailTypeList(), 'expanded' => true, 'multiple' => false));
 
-        if ($this->getRequest()->get('_sonata_admin') === 'asbo.whoswho.admin.fra.email') {
+        if (!$this->isChild()) {
             $formMapper->add('fra', 'sonata_type_model_list');
         }
     }

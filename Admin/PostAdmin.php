@@ -25,6 +25,11 @@ class PostAdmin extends Admin
 {
 
     /**
+     * {@inheritdoc}
+     */
+    protected $parentAssociationMapping = 'fra';
+
+    /**
      * {@inheritDoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
@@ -32,7 +37,7 @@ class PostAdmin extends Admin
         $formMapper->add('post', 'sonata_type_model_list')
                    ->add('date', 'asbo_type_annotext', array('help' => 'Ajouter ici l\'anno s\'il s\'agit d\'un post lors d\'une année de student, sinon ajouter l\'année civile !'));
 
-        if ($this->getRequest()->get('_sonata_admin') === 'asbo.whoswho.admin.fra.post') {
+        if (!$this->isChild()) {
             $formMapper->add('fra', 'sonata_type_model_list');
         }
     }
