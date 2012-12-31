@@ -12,6 +12,7 @@
 namespace Asbo\WhosWhoBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -19,6 +20,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Asbo\WhosWhoBundle\Entity\Fra;
 use Asbo\WhosWhoBundle\Entity\Email;
 use Asbo\WhosWhoBundle\Form\DataTransformer\DateToAnnoTransformer;
+use Knp\Menu\ItemInterface as MenuItemInterface;
 
 /**
  * Fra admin for SonataAdminBundle
@@ -151,6 +153,31 @@ class FraAdmin extends Admin
             ->add('getStatusCode')
             ->add('pontif')
             ->add('settings', 'array');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
+    {
+        if (!$childAdmin && !in_array($action, array('edit'))) {
+            return;
+        }
+
+        $admin = $this->isChild() ? $this->getParent() : $this;
+
+        $id = $admin->getRequest()->get('id');
+
+        $menu->addChild(
+            'Voir/Editer',
+            array('uri' => $admin->generateUrl('edit', array('id' => $id)))
+        );
+
+        $menu->addChild(
+            'Postes Extérieurs',
+            array('uri' => $admin->generateUrl('asbo.whoswho.admin.fra.externalpost.list', array('id' => $id)))
+        );
+
     }
 
     /**

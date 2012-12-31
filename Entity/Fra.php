@@ -23,6 +23,7 @@ use Asbo\WhosWhoBundle\Entity\Post;
 use Asbo\WhosWhoBundle\Entity\Phone;
 use Asbo\WhosWhoBundle\Entity\Address;
 use Asbo\WhosWhoBundle\Entity\Job;
+use Asbo\WhosWhoBundle\Entity\ExternalPost;
 use Asbo\WhosWhoBundle\Form\DataTransformer\DateToAnnoTransformer;
 
 /**
@@ -202,6 +203,13 @@ class Fra
      * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\Job", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $jobs;
+
+    /**
+     * @var Asbo\WhosWhoBundle\Entity\ExternalPost $externalPosts
+     *
+     * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\ExternalPost", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $externalPosts;
 
     /**
      * @var array $settings
@@ -893,6 +901,41 @@ class Fra
             default:
                 throw new \Exception('Unknown parameter type: ' . var_dump($posts, true));
         }
+    }
+
+    /**
+     * Add external posts
+     *
+     * @param \Asbo\WhosWhoBundle\Entity\ExternalPost $externalPost
+     */
+    public function addExternalPosts(ExternalPost $externalPost)
+    {
+        $this->externalPosts[] = $externalPost;
+        $comment->setFra($this);
+    }
+
+    /**
+     * Set multiple external posts
+     *
+     * @param array $externalPosts
+     */
+    public function setExternalPosts($externalPosts)
+    {
+        $this->externalPosts = new \Doctrine\Common\Collections\ArrayCollection;
+
+        foreach ($externalPosts as $externalPost) {
+            $this->addExternalPosts($externalPost);
+        }
+    }
+
+    /**
+     * Get external posts
+     *
+     * @return array $externalPosts
+     */
+    public function getExternalPosts()
+    {
+        return $this->externalPosts;
     }
 
     /**
