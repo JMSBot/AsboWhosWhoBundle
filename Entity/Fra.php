@@ -262,6 +262,7 @@ class Fra
         $this->phones    = new \Doctrine\Common\Collections\ArrayCollection();
         $this->addresses = new \Doctrine\Common\Collections\ArrayCollection();
         $this->posts     = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->jobs      = new \Doctrine\Common\Collections\ArrayCollection();
 
         // @todo: Trouver un autre moyen de changer la date !!!
         $annos           = DateToAnnoTransformer::getAnnosList();
