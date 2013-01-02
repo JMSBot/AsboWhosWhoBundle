@@ -35,7 +35,7 @@ class AddressAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('address', 'gmap_address', array('data_class' => 'Asbo\WhosWhoBundle\Entity\Address', 'help_inline' => 'Déplacer le curseur rouge pour indiquer l\'endroit exact ! '))
+        $formMapper->add('address', 'gmap_address', array('data_class' => 'Asbo\WhosWhoBundle\Entity\Address', 'help_inline' => 'Essayez de garder un format du style "Chaussée de Malines 51, 1970 Wezembeek-Oppem, Belgique" ! <br />Déplacer le curseur rouge pour indiquer l\'endroit exact ! '))
                    ->add('type', 'choice', array('choices' => Address::getTypeList(), 'expanded' => false, 'multiple' => false))
                    ->add('principal');
 
@@ -50,6 +50,7 @@ class AddressAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('fra')
+                       ->add('address')
                        ->add('type', 'doctrine_orm_choice', array('field_type' => 'choice', 'field_options' => array('choices' => Address::getTypeList())))
                        ->add('principal');
     }
