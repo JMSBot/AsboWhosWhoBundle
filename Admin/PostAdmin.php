@@ -48,7 +48,7 @@ class PostAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('id')
-                   ->addIdentifier('post')
+                   ->add('post')
                    ->add('date', null, array('template' => 'AsboWhosWhoBundle:Admin:list_anno.html.twig'));
 
         if (!$this->isChild()) {
