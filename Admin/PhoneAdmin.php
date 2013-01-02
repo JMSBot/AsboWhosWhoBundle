@@ -37,7 +37,7 @@ class PhoneAdmin extends Admin
     {
         $formMapper->add('number')
                    ->add('type', 'choice', array('choices' => Phone::getTypeList(), 'expanded' => false, 'multiple' => false))
-                   ->add('country', 'country')
+                   ->add('country', 'country', array('preferred_choices' => array('BE', 'FR'),))
                    ->add('principal');
 
         if (!$this->isChild()) {
