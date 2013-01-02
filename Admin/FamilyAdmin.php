@@ -39,7 +39,7 @@ class FamilyAdmin extends Admin
                    ->add('firstname')
                    ->add('date')
                    ->add('type', 'choice', array('choices' => Family::getTypeList(), 'expanded' => true, 'multiple' => false))
-                   ->add('link', null, array('required' => false));
+                   ->add('link', 'sonata_type_model_list', array('required' => false));
 
         if (!$this->isChild()) {
             $formMapper->add('fra', 'sonata_type_model_list');
@@ -67,6 +67,8 @@ class FamilyAdmin extends Admin
                    ->add('date')
                    ->add('getTypeCode')
                    ->add('link')
+                   ;
+
         if (!$this->isChild()) {
             $listMapper->add('fra', 'sonata_type_model_list');
         }
