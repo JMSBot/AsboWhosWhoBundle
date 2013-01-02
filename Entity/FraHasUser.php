@@ -12,6 +12,7 @@ namespace Asbo\WhosWhoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @author De Ron Malian <deronmalian@gmail.com>
@@ -36,6 +37,7 @@ class FraHasUser
      *
      * @ORM\ManyToOne(targetEntity="Asbo\WhosWhoBundle\Entity\Fra", cascade={"persist"}, inversedBy="fraHasUsers")
      * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
+     * @Assert\NotNull()
      */
     protected $fra;
 
@@ -44,6 +46,7 @@ class FraHasUser
      *
      * @ORM\ManyToOne(targetEntity="Asbo\UserBundle\Entity\User", cascade={"persist"})
      * @ORM\JoinColumn(onDelete="CASCADE", nullable=false)
+     * @Assert\NotNull()
      */
     protected $user;
 

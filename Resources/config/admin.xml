@@ -13,7 +13,7 @@
     <services>
 
         <service id="asbo.whoswho.admin.fra_has_user" class="Asbo\WhosWhoBundle\Admin\FraHasUserAdmin">
-            <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false" />
+            <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false" label="Liaison" />
             <argument />
             <argument>Asbo\WhosWhoBundle\Entity\FraHasUser</argument>
             <argument>%asbo.whoswho.admin.controller.crud%</argument>
@@ -28,6 +28,10 @@
             <argument />
             <argument>Asbo\WhosWhoBundle\Entity\Fra</argument>
             <argument>%asbo.whoswho.admin.controller.crud%</argument>
+
+            <call method="addChild">
+                <argument type="service" id="asbo.whoswho.admin.fra_has_user" />
+            </call>
 
             <call method="addChild">
                 <argument type="service" id="asbo.whoswho.admin.externalpost" />

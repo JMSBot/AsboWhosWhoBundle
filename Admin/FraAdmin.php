@@ -42,10 +42,6 @@ class FraAdmin extends Admin
                 ->add('gender', 'choice', array('choices' => array('Homme', 'Femme')))
                 ->add('bornAt', 'genemu_jquerydate', array('widget' => 'single_text','required' => false))
                 ->add('bornIn')
-                ->add('fraHasUsers', 'sonata_type_collection', array('required' => false), array(
-                    'edit' => 'inline',
-                    'inline' => 'table'
-                    ))
             ->end()
 
             ->with('ASBO')
@@ -144,6 +140,11 @@ class FraAdmin extends Admin
         );
 
         $menu->addChild(
+            'Utilisateurs liés',
+            array('uri' => $admin->generateUrl('asbo.whoswho.admin.fra_has_user.list', array('id' => $id)))
+        );
+
+        $menu->addChild(
             'Emails',
             array('uri' => $admin->generateUrl('asbo.whoswho.admin.email.list', array('id' => $id)))
         );
@@ -190,7 +191,7 @@ class FraAdmin extends Admin
      */
     public function preUpdate($entity)
     {
-        $entity->setFraHasUsers($entity->getFraHasUsers());
+        //$entity->setFraHasUsers($entity->getFraHasUsers());
         foreach ($entity->getFraHasUsers() as $relation) {
             $relation->preUpdate();
         }
@@ -201,6 +202,6 @@ class FraAdmin extends Admin
      */
     public function prePersist($entity)
     {
-        $entity->setFraHasUsers($entity->getFraHasUsers());
+        //$entity->setFraHasUsers($entity->getFraHasUsers());
     }
 }

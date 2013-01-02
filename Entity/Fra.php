@@ -23,6 +23,7 @@ use Asbo\WhosWhoBundle\Entity\Post;
 use Asbo\WhosWhoBundle\Entity\Phone;
 use Asbo\WhosWhoBundle\Entity\Address;
 use Asbo\WhosWhoBundle\Entity\Job;
+use Asbo\WhosWhoBundle\Entity\Family;
 use Asbo\WhosWhoBundle\Entity\ExternalPost;
 use Asbo\WhosWhoBundle\Form\DataTransformer\DateToAnnoTransformer;
 
@@ -194,6 +195,13 @@ class Fra
      * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\Job", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $jobs;
+
+    /**
+     * @var Asbo\WhosWhoBundle\Entity\Family $families
+     *
+     * @ORM\OneToMany(targetEntity="Asbo\WhosWhoBundle\Entity\Family", mappedBy="fra", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $families;
 
     /**
      * @var Asbo\WhosWhoBundle\Entity\ExternalPost $externalPosts
@@ -727,6 +735,41 @@ class Fra
     public function getDiplomas()
     {
         return $this->diplomas;
+    }
+
+    /**
+     * Add a family
+     *
+     * @param \Asbo\WhosWhoBundle\Entity\Family $family
+     */
+    public function addFamilies(Family $family)
+    {
+        $family->setFra($this);
+        $this->families[] = $family;
+    }
+
+    /**
+     * Set families
+     *
+     * @param array $families
+     */
+    public function setFamilies($families)
+    {
+        $this->families = new \Doctrine\Common\Collections\ArrayCollection;
+
+        foreach ($familiess as $family) {
+            $this->addFamiliess($family);
+        }
+    }
+
+    /**
+     * Get families
+     *
+     * @return array $families
+     */
+    public function getFamilies()
+    {
+        return $this->families;
     }
 
     /**

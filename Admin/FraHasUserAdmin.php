@@ -18,6 +18,12 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 
 class FraHasUserAdmin extends Admin
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $parentAssociationMapping = 'fra';
+
     /**
      * {@inheritDoc}
      */
@@ -46,7 +52,7 @@ class FraHasUserAdmin extends Admin
     {
         $listMapper
             ->add('user')
-            ->add('owner')
+            ->add('owner', null, array('editable' => true))
         ;
     }
 }
