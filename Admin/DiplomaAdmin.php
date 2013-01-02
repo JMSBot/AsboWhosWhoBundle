@@ -52,6 +52,8 @@ class DiplomaAdmin extends Admin
                    ->add('specialty')
                    ->add('institution')
                    ->add('graduatedAt')
-                   ->add('fra');
+        if (!$this->isChild()) {
+            $listMapper->add('fra', 'sonata_type_model_list');
+        }
     }
 }

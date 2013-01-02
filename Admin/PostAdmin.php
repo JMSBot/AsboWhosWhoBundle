@@ -50,5 +50,9 @@ class PostAdmin extends Admin
         $listMapper->addIdentifier('id')
                    ->addIdentifier('post')
                    ->add('date', null, array('template' => 'AsboWhosWhoBundle:Admin:list_anno.html.twig'));
+
+        if (!$this->isChild()) {
+            $listMapper->add('fra', 'sonata_type_model_list');
+        }
     }
 }

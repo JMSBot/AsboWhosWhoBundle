@@ -67,6 +67,8 @@ class FamilyAdmin extends Admin
                    ->add('date')
                    ->add('getTypeCode')
                    ->add('link')
-                   ->add('fra');
+        if (!$this->isChild()) {
+            $listMapper->add('fra', 'sonata_type_model_list');
+        }
     }
 }

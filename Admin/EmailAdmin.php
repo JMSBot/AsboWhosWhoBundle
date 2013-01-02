@@ -68,9 +68,12 @@ class EmailAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('email')
-                   ->add('fra')
                    ->add('getTypeCode', 'text', array('label' => 'Type', 'sortable' => 'Type'))
                    ->add('principal');
+        if (!$this->isChild()) {
+            $listMapper->add('fra', 'sonata_type_model_list');
+        }
+
     }
 
     /**

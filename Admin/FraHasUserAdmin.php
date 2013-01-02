@@ -46,7 +46,6 @@ class FraHasUserAdmin extends Admin
     {
         $listMapper
             ->add('user')
-            ->add('fra')
             ->add('owner')
         ;
     }
