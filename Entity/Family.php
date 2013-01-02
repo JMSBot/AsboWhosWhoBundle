@@ -22,6 +22,7 @@ use Asbo\WhosWhoBundle\Entity\Fra;
  *
  * @ORM\Table(name="ww__family")
  * @ORM\Entity(repositoryClass="Asbo\WhosWhoBundle\Entity\FamilyRepository")
+ * @todo : Refactoriser tout ça. Si untel est le fil d'un autre alors l'autre est aussi le père...
  */
 class Family
 {
