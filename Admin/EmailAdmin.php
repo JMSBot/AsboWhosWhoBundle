@@ -69,7 +69,8 @@ class EmailAdmin extends Admin
     {
         $listMapper->addIdentifier('email')
                    ->add('getTypeCode', 'text', array('label' => 'Type', 'sortable' => 'Type'))
-                   ->add('principal');
+                   ->add('principal', null, array('editable' => true));
+
         if (!$this->isChild()) {
             $listMapper->add('fra', 'sonata_type_model_list');
         }

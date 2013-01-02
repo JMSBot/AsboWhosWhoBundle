@@ -65,8 +65,9 @@ class PhoneAdmin extends Admin
         $listMapper->addIdentifier('number')
                    ->add('getTypeCode')
                    ->add('getCountryCode')
-                   ->add('principal')
                    ->add('_action', 'actions', array('actions' => array('unpublish' => array('template' =>'AsboWhosWhoBundle:Admin:phone_unpublish.html.twig'))));
+                   ->add('principal', null, array('editable' => true));
+
         if (!$this->isChild()) {
             $listMapper->add('fra', 'sonata_type_model_list');
         }

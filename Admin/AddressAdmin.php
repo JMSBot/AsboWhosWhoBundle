@@ -61,7 +61,8 @@ class AddressAdmin extends Admin
     {
         $listMapper->addIdentifier('address')
                    ->add('TypeCode')
-                   ->add('principal');
+                   ->add('principal', null, array('editable' => true));
+
         if (!$this->isChild()) {
             $listMapper->add('fra', 'sonata_type_model_list');
         }
