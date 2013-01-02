@@ -51,7 +51,8 @@ class DiplomaAdmin extends Admin
         $listMapper->addIdentifier('diploma')
                    ->add('specialty')
                    ->add('institution')
-                   ->add('graduatedAt')
+                   ->add('graduatedAt', null, array('template' => 'AsboWhosWhoBundle:Admin:current.html.twig'));
+
         if (!$this->isChild()) {
             $listMapper->add('fra', 'sonata_type_model_list');
         }

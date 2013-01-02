@@ -61,8 +61,7 @@ class JobAdmin extends Admin
                    ->add('sector')
                    ->add('position')
                    ->add('dateBegin')
-                   ->add('dateEnd')
-                   ->add('current', 'boolean')
+                   ->add('dateEnd', null, array('template' => 'AsboWhosWhoBundle:Admin:current.html.twig'))
                    ->add('fra');
     }
 }

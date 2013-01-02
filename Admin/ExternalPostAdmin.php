@@ -63,8 +63,7 @@ class ExternalPostAdmin extends Admin
         $listMapper->addIdentifier('position')
                    ->add('where')
                    ->add('dateBegin')
-                   ->add('dateEnd')
-                   ->add('current', 'boolean');
+                   ->add('dateEnd', null, array('template' => 'AsboWhosWhoBundle:Admin:current.html.twig'));
 
         if (!$this->isChild()) {
             $listMapper->add('fra', 'sonata_type_model_list');
