@@ -108,22 +108,22 @@
             </call>
         </service>
 
-        <service id="asbo.whoswho.admin.posts" class="Asbo\WhosWhoBundle\Admin\PostListAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="%asbo.whoswho.admin.groupname%" label="Liste des Postes" />
+        <service id="asbo.whoswho.admin.post" class="Asbo\WhosWhoBundle\Admin\PostAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="%asbo.whoswho.admin.groupname%" label="Poste" />
             <argument />
-            <argument>Asbo\WhosWhoBundle\Entity\PostList</argument>
-            <argument>%asbo.whoswho.admin.controller.crud%</argument>
+            <argument>Asbo\WhosWhoBundle\Entity\Post</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
 
             <call method="setTranslationDomain">
                 <argument>%asbo_whoswho.translation_domain%</argument>
             </call>
         </service>
 
-        <service id="asbo.whoswho.admin.post" class="Asbo\WhosWhoBundle\Admin\PostAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="%asbo.whoswho.admin.groupname%" label="Postes" />
+        <service id="asbo.whoswho.admin.externalPost" class="Asbo\WhosWhoBundle\Admin\externalPostAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="%asbo.whoswho.admin.groupname%" label="Poste Externe" />
             <argument />
-            <argument>Asbo\WhosWhoBundle\Entity\Post</argument>
-            <argument>SonataAdminBundle:CRUD</argument>
+            <argument>Asbo\WhosWhoBundle\Entity\ExternalPost</argument>
+            <argument>%asbo.whoswho.admin.controller.crud%</argument>
 
             <call method="setTranslationDomain">
                 <argument>%asbo_whoswho.translation_domain%</argument>
@@ -163,10 +163,10 @@
             </call>
         </service>
 
-        <service id="asbo.whoswho.admin.externalPost" class="Asbo\WhosWhoBundle\Admin\externalPostAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="%asbo.whoswho.admin.groupname%" label="Poste Externe" />
+        <service id="asbo.whoswho.admin.posts" class="Asbo\WhosWhoBundle\Admin\PostListAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="%asbo.whoswho.admin.groupname%" label="Liste des Postes" />
             <argument />
-            <argument>Asbo\WhosWhoBundle\Entity\ExternalPost</argument>
+            <argument>Asbo\WhosWhoBundle\Entity\PostList</argument>
             <argument>%asbo.whoswho.admin.controller.crud%</argument>
 
             <call method="setTranslationDomain">
