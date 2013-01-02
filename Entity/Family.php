@@ -75,7 +75,7 @@ class Family
     /**
      * @var Asbo\WhosWhoBundle\Entity\Fra
      *
-     * @ORM\ManyToOne(targetEntity="Asbo\WhosWhoBundle\Entity\Fra", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="Asbo\WhosWhoBundle\Entity\Fra", inversedBy="families")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $fra;
