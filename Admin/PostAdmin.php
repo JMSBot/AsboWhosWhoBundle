@@ -13,6 +13,7 @@ namespace Asbo\WhosWhoBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Asbo\WhosWhoBundle\Entity\Post;
 
@@ -40,6 +41,16 @@ class PostAdmin extends Admin
         if (!$this->isChild()) {
             $formMapper->add('fra', 'sonata_type_model_list');
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * @todo : Add anno filter
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper->add('fra')
+                       ->add('post');
     }
 
     /**

@@ -13,6 +13,7 @@ namespace Asbo\WhosWhoBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
@@ -41,6 +42,19 @@ class DiplomaAdmin extends Admin
         if (!$this->isChild()) {
             $formMapper->add('fra', 'sonata_type_model_list');
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * @todo : add current filter
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper->add('fra')
+                       ->add('diploma')
+                       ->add('specialty')
+                       ->add('institution')
+                       ->add('graduatedAt');
     }
 
     /**

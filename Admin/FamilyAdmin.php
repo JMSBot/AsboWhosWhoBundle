@@ -51,9 +51,11 @@ class FamilyAdmin extends Admin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('firstname')
+        $datagridMapper->add('fra')
+                       ->add('firstname')
                        ->add('lastname')
-                       ->add('fra')
+                       ->add('date')
+                       ->add('type', 'doctrine_orm_choice', array('field_type' => 'choice', 'field_options' => array('choices' => Family::getTypeList())))
                        ->add('link');
     }
 

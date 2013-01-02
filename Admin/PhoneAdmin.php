@@ -50,8 +50,8 @@ class PhoneAdmin extends Admin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('number')
-                       ->add('fra')
+        $datagridMapper->add('fra')
+                       ->add('number')
                        ->add('type', 'doctrine_orm_choice', array('field_type' => 'choice', 'field_options' => array('choices' => Phone::getTypeList())))
                        ->add('country', null, array('field_type' => 'country'))
                        ->add('principal');

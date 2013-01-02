@@ -41,7 +41,9 @@ class FraHasUserAdmin extends Admin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-
+        $datagridMapper->add('fra')
+                       ->add('user')
+                       ->add('owner');
     }
 
     /**

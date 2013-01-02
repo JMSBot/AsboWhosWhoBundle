@@ -47,9 +47,16 @@ class JobAdmin extends Admin
 
     /**
      * {@inheritDoc}
+     * @todo : add current filter
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
+        $datagridMapper->add('fra')
+                       ->add('company')
+                       ->add('sector')
+                       ->add('position')
+                       ->add('dateBegin')
+                       ->add('dateEnd');
     }
 
     /**
