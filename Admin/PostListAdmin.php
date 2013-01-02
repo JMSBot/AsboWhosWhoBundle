@@ -31,6 +31,7 @@ class PostListAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('function')
+                   ->add('monogramme')
                    ->add('type', 'choice', array('choices' => PostList::getTypeList(), 'expanded' => true))
                    ->add('denier');
     }
@@ -40,7 +41,8 @@ class PostListAdmin extends Admin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('type', 'doctrine_orm_choice', array('field_type' => 'choice', 'field_options' => array('choices' => PostList::getTypeList())))
+        $datagridMapper->add('monogramme')
+                       ->add('type', 'doctrine_orm_choice', array('field_type' => 'choice', 'field_options' => array('choices' => PostList::getTypeList())))
                        ->add('denier');
     }
 
@@ -50,6 +52,7 @@ class PostListAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('function')
+                   ->add('monogramme')
                    ->add('getTypeCode')
                    ->add('denier');
     }

@@ -68,6 +68,14 @@ class PostList
     private $denier;
 
     /**
+     * @var string $monogramme
+     *
+     * @ORM\Column(name="monogramme", type="string", length=10, nullable=true)
+     * @Assert\Length(min="1", max="50")
+     */
+    private $monogramme;
+
+    /**
      * __toString()
      */
     public function __toString()
@@ -106,6 +114,29 @@ class PostList
     public function getFunction()
     {
         return $this->function;
+    }
+
+    /**
+     * Set monogramme
+     *
+     * @param string $monogramme
+     * @return $this
+     */
+    public function setMonogramme($monogramme)
+    {
+        $this->monogramme = $monogramme;
+
+        return $this;
+    }
+
+    /**
+     * Get monogramme
+     *
+     * @return string
+     */
+    public function getMonogramme()
+    {
+        return $this->monogramme;
     }
 
     /**
